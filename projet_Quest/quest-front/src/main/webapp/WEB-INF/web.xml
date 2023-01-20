@@ -19,4 +19,14 @@
     <servlet-name>StagiaireController</servlet-name>
     <url-pattern>/StagiaireController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>OrdinateurController</display-name>
+    <servlet-name>OrdinateurController</servlet-name>
+    <servlet-class>controller.OrdinateurController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrdinateurController</servlet-name>
+    <url-pattern>/OrdinateurController</url-pattern>
+  </servlet-mapping>
 </web-app>
