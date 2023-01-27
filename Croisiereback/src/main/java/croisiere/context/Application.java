@@ -3,13 +3,14 @@ package croisiere.context;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import croisiere.repository.ICompteRepository;
 import croisiere.repository.jpa.CompteRepositoryjpa;
 
 public class Application {
 	private static Application instance = null;
 
 	private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("croisiere");
-	private final CompteRepositoryjpa cRepo = new CompteRepositoryjpa();
+	private final ICompteRepository compteRepo = new CompteRepositoryjpa();
 
 	private Application() {
 	}
@@ -25,6 +26,16 @@ public class Application {
 	public EntityManagerFactory getEmf() {
 		return emf;
 	}
+
+	public ICompteRepository getCompteRepo() {
+		return compteRepo;
+	}
+
+	public static void setInstance(Application instance) {
+		Application.instance = instance;
+	}
+	
+	
 	
 	
 }
