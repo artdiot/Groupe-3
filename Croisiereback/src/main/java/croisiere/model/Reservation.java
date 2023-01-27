@@ -4,14 +4,33 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name="booking")
 public class Reservation {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name = "price", length = 10)
 	private double prix;
+	@Column(name="departure_date", length = 10)
 	private LocalDate date;
+	@Column(name="class")
 	private int classe;
+	@OneToMany(mappedBy ="reservation")
 	private List<Passager> passagers = new ArrayList<>();
+	@Transient
 	private Client client;
+	@Transient
 	private Voyage voyage;
 	
 	public Reservation() {

@@ -1,9 +1,18 @@
 package croisiere.model;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+
+@Embeddable
 public class Adresse {
+	@Column(name="planete")
 	private String planete;
+	@Column(name="district")
 	private String district;
+	@Column(name="city")
 	private String ville;
+	@Column(name="street")
 	private String rue;
 	
 	public Adresse() {
