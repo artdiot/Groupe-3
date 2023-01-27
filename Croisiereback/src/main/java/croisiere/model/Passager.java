@@ -7,11 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
-@Table(name ="cursus")
+@Table(name ="passenger")
 public class Passager {
 
 	@Id
@@ -23,7 +24,8 @@ public class Passager {
 	private String prenom;
 	@Column(name = "birthdate", length = 10)
 	private LocalDate dateNaissance;
-	@Transient
+	@ManyToOne
+	@JoinColumn(name = "booking_id")
 	private Reservation reservation;
 	
 	public Passager() {
