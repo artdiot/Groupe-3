@@ -19,6 +19,12 @@ public class Client extends Compte {
 		super();
 	}
 
+	
+	public Client(String login, String password, String nom, String prenom, String email, Adresse adresse) {
+		super(login, password, nom, prenom, email, adresse);
+	}
+
+
 	public List<Reservation> getReservations() {
 		return reservations;
 	}

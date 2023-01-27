@@ -2,12 +2,20 @@ package croisiere.repository;
 
 import java.util.List;
 
-public interface ICompteRepository<T,K> {
+import croisiere.model.Admin;
+import croisiere.model.Client;
+import croisiere.model.Compte;
+import croisiere.model.MembreEquipage;
 
-	List<T> findAll();
-	T findById(K id);
-	T save(T o);
-	void deleteById(K id);
-	void delete(T o);
+public interface ICompteRepository extends IRepository<Compte,Integer> {
+
+	List<Compte> findAll();
+	Compte findById(Integer id);
+	Compte save(Compte o);
+	void deleteById(Integer id);
+	void delete(Compte o);
+	List<Admin> findAllAdmin();
+	List<Client> findAllClient();
+	List<MembreEquipage> findAllMembreEquipage();
 	
 }
