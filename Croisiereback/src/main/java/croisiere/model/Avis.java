@@ -2,6 +2,7 @@ package croisiere.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +22,7 @@ public class Avis {
 	private int note;
 	@Column(name="comment", length = 255)
 	private String commentaire;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="customer_id")
 	private Client client;
 	@Transient

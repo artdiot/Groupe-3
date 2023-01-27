@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 @Entity
 @DiscriminatorValue("customer")
 public class Client extends Compte {

@@ -2,12 +2,13 @@ package croisiere.repository;
 
 import java.util.List;
 
-public interface IReservationRepository<T,K> {
+import croisiere.model.Reservation;
 
-	List<T> findAll();
-	T findById(K id);
-	T save(T o);
-	void deleteById(K id);
-	void delete(T o);
-	
+public interface IReservationRepository extends IRepository<Reservation, Integer> {
+
+	List<Reservation> findAll();
+	Reservation findById(Integer id);
+	Reservation save(Reservation r);
+	void deleteById(Integer id);
+	void delete(Reservation r); 
 }
