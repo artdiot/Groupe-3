@@ -19,7 +19,7 @@ public class MembreEquipage extends Compte{
 	private boolean disponible;
 	private int experience;
 	@Transient
-	private Equipage equipage;
+	private EquipageVoyage equipage;
 	
 	public MembreEquipage() {
 	super();
@@ -80,11 +80,11 @@ public class MembreEquipage extends Compte{
 		this.experience = experience;
 	}
 
-	public Equipage getEquipage() {
+	public EquipageVoyage getEquipage() {
 		return equipage;
 	}
 
-	public void setEquipage(Equipage equipage) {
+	public void setEquipage(EquipageVoyage equipage) {
 		this.equipage = equipage;
 	}
 	

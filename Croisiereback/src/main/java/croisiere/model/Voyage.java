@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 @Entity
 @Table(name = "travel")
 public class Voyage {
@@ -24,10 +24,19 @@ public class Voyage {
 	@Column(name = "capacity")
 	private int capacite;
 
-@Transient
-private List<Etape> etapes = new ArrayList<>();
-@Transient
-private List<Reservation> reservations = new ArrayList<>();
+	@OneToMany(mappedBy = "voyage")
+	private List<Etape> etapes = new ArrayList<>();
+	@OneToMany(mappedBy = "voyage")
+	private List<Reservation> reservations = new ArrayList<>();
+	@OneToMany(mappedBy = "voyage")
+	private List<Avis> avis = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "voyage")
+	private List<EquipageVoyage> equipageVoyage = new ArrayList<>();	
+	
+	
+	
+	
 public Integer getId() {
 	return id;
 }

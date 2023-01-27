@@ -4,9 +4,13 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -20,14 +24,18 @@ public class Etape {
 	private LocalDate depart;
 	@Column(name = "arrival")
 	private LocalDate arrivee;
-	@Transient
-	//@Column(name = "planetdeparture")
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "planet_departure_id")
 	private Planete planeteDepart;
-	@Transient
-	//@Column(name = "planetarrival")
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "planet_arrival_id")
 	private Planete planeteArrive;
 	
-	
+	@ManyToOne
+	@JoinColumn(name = "travel_id")
+	private Voyage voyage;
 	
 	public Integer getId() {
 		return id;
