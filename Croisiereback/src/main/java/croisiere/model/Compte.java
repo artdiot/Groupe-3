@@ -27,7 +27,24 @@ public abstract class Compte {
 	@Embedded
 	private Adresse adresse;
 	
+	public Compte() {
+		super();
+	}
 	
+	
+	
+	public Compte(String login, String password, String nom, String prenom, String email, Adresse adresse) {
+		super();
+		this.login = login;
+		this.password = password;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.adresse = adresse;
+	}
+
+
+
 	public Integer getId() {
 		return id;
 	}
