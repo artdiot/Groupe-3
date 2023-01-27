@@ -11,7 +11,7 @@ import croisiere.context.Application;
 import croisiere.model.Client;
 import croisiere.model.Etape;
 import croisiere.repository.IEtapeRepository;
-import quest.model.Filiere;
+
 
 public class EtapeRepositoryjpa implements IEtapeRepository{
 
