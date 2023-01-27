@@ -3,12 +3,18 @@ package croisiere.context;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import croisiere.repository.ICompteRepository;
-import croisiere.repository.IPlaneteRepository;
-import croisiere.repository.IVoyageRepository;
 import croisiere.repository.IAvisRepository;
+import croisiere.repository.ICompteRepository;
 import croisiere.repository.IPassagerRepository;
+import croisiere.repository.IPlaneteRepository;
 import croisiere.repository.IReservationRepository;
+import croisiere.repository.IVoyageRepository;
+import croisiere.repository.jpa.AvisRepositoryjpa;
+import croisiere.repository.jpa.CompteRepositoryjpa;
+import croisiere.repository.jpa.PassagerRepositoryjpa;
+import croisiere.repository.jpa.PlaneteRepositoryjpa;
+import croisiere.repository.jpa.ReservationRepositoryjpa;
+import croisiere.repository.jpa.VoyageRepositoryjpa;
 
 public class Application {
 	private static Application instance = null;
@@ -46,9 +52,6 @@ public class Application {
 		return compteRepo;
 	}
 
-	public static void setInstance(Application instance) {
-		Application.instance = instance;
-	}
 
 	public IVoyageRepository getVoyageRepo() {
 		return voyageRepo;

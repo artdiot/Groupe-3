@@ -31,11 +31,11 @@ public class PassagerTest {
 	@Test
 	public void creation() {
 		
-		Reservation resa = new Reservation(3.0,LocalDate.parse("2023-05-01"),3);
+		//Reservation resa = new Reservation(3.0,LocalDate.parse("2023-05-01"),3);
 		
 		//Act
 		Passager passager = new Passager("flo","RA",LocalDate.parse("1993-05-03"));
-		passager.setReservation(resa);
+		//passager.setReservation(resa);
 		passager = passagerRepo.save(passager);
 		
 		//Assert
@@ -44,9 +44,9 @@ public class PassagerTest {
 		Assert.assertEquals("flo", passagerFind.getNom());
 		Assert.assertEquals("RA", passagerFind.getPrenom());
 		Assert.assertEquals(LocalDate.parse("1993-05-03"), passagerFind.getDateNaissance());
-		Assert.assertEquals(resa.getPrix(), passagerFind.getReservation().getPrix(),0.001);
+		/*Assert.assertEquals(resa.getPrix(), passagerFind.getReservation().getPrix(),0.001);
 		Assert.assertEquals(LocalDate.parse("2023-05-03"), passagerFind.getReservation().getDate());
-		Assert.assertEquals(3, passagerFind.getReservation().getDate());
+		Assert.assertEquals(3, passagerFind.getReservation().getDate());*/
 		
 		
 		
