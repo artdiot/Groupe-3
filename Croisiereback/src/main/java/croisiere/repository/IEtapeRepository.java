@@ -1,13 +1,7 @@
 package croisiere.repository;
 
-import java.util.List;
+import croisiere.model.Etape;
 
-public interface IEtapeRepository<T,K> {
+public interface IEtapeRepository extends IRepository<Etape, Integer>{
 
-	List<T> findAll();
-	T findById(K id);
-	T save(T o);
-	void deleteById(K id);
-	void delete(T o);
-	
-}
+	}

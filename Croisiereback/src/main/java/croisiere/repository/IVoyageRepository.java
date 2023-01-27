@@ -1,13 +1,8 @@
 package croisiere.repository;
 
-import java.util.List;
+import croisiere.model.Voyage;
 
-public interface IVoyageRepository<T,K> {
+public interface IVoyageRepository extends IRepository<Voyage, Integer> {
 
-	List<T> findAll();
-	T findById(K id);
-	T save(T o);
-	void deleteById(K id);
-	void delete(T o);
 	
 }

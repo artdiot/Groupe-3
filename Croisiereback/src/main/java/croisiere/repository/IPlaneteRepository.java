@@ -1,13 +1,8 @@
 package croisiere.repository;
 
-import java.util.List;
+import croisiere.model.Planete;
 
-public interface IPlaneteRepository<T,K> {
+public interface IPlaneteRepository extends IRepository<Planete, Integer> {
 
-	List<T> findAll();
-	T findById(K id);
-	T save(T o);
-	void deleteById(K id);
-	void delete(T o);
 	
 }
