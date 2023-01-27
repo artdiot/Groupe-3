@@ -32,6 +32,16 @@ public class Passager {
 	public Passager() {
 		super();
 	}
+	
+	
+
+	public Passager(String nom, String prenom, LocalDate dateNaissance) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+	}
+
+
 
 	public Integer getId() {
 		return id;

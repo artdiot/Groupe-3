@@ -6,9 +6,9 @@ import javax.persistence.Persistence;
 import croisiere.repository.ICompteRepository;
 import croisiere.repository.IPlaneteRepository;
 import croisiere.repository.IVoyageRepository;
-import croisiere.repository.jpa.CompteRepositoryjpa;
-import croisiere.repository.jpa.PlaneteRepositoryjpa;
-import croisiere.repository.jpa.VoyageRepositoryjpa;
+import croisiere.repository.IAvisRepository;
+import croisiere.repository.IPassagerRepository;
+import croisiere.repository.IReservationRepository;
 
 public class Application {
 	private static Application instance = null;
@@ -17,6 +17,9 @@ public class Application {
 	private final ICompteRepository compteRepo = new CompteRepositoryjpa();
 	private final IVoyageRepository voyageRepo = new VoyageRepositoryjpa();
 	private final IPlaneteRepository planeteRepo = new PlaneteRepositoryjpa();
+	private final IPassagerRepository passagerRepo = new PassagerRepositoryjpa();
+	private final IAvisRepository avisRepo = new AvisRepositoryjpa();
+	private final IReservationRepository reservationRepo = new ReservationRepositoryjpa();
 
 	private Application() {
 	}
@@ -29,6 +32,12 @@ public class Application {
 		return instance;
 	}
 
+
+
+	public static void setInstance(Application instance) {
+		Application.instance = instance;
+	}
+	
 	public EntityManagerFactory getEmf() {
 		return emf;
 	}
@@ -47,6 +56,18 @@ public class Application {
 
 	public IPlaneteRepository getPlaneteRepo() {
 		return planeteRepo;
+	}
+
+	public IPassagerRepository getPassagerRepo() {
+		return passagerRepo;
+	}
+
+	public IAvisRepository getAvisRepo() {
+		return avisRepo;
+	}
+
+	public IReservationRepository getReservationRepo() {
+		return reservationRepo;
 	}
 	
 	

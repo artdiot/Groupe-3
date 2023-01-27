@@ -34,6 +34,15 @@ public class Avis {
 	public Avis() {
 		super();
 	}
+	
+	
+	public Avis(int note, String commentaire) {
+		super();
+		this.note = note;
+		this.commentaire = commentaire;
+	}
+
+
 	public Integer getId() {
 		return id;
 	}
