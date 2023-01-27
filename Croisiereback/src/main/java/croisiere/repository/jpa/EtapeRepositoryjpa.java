@@ -8,7 +8,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import croisiere.context.Application;
-import croisiere.model.Client;
 import croisiere.model.Etape;
 import croisiere.repository.IEtapeRepository;
 

@@ -2,15 +2,31 @@ package croisiere.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+@Entity
+@Table(name = "travel")
 public class Voyage {
-private Integer id;
-private double prix;
-private double distance;
-private int duree;
-private int capacite;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	@Column(name = "price")
+	private double prix;
+	@Column(name = "distance")
+	private double distance;
+	@Column(name = "duration")
+	private int duree;
+	@Column(name = "capacity")
+	private int capacite;
 
-
+@Transient
 private List<Etape> etapes = new ArrayList<>();
+@Transient
 private List<Reservation> reservations = new ArrayList<>();
 public Integer getId() {
 	return id;
