@@ -2,14 +2,33 @@ package croisiere.model;
 
 import java.time.LocalDate;
 
-public class Etape {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
+@Entity
+@Table(name = "stage")
+public class Etape {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name = "departure")
 	private LocalDate depart;
+	@Column(name = "arrival")
 	private LocalDate arrivee;
+	@Transient
+	//@Column(name = "planetdeparture")
+	private Planete planeteDepart;
+	@Transient
+	//@Column(name = "planetarrival")
+	private Planete planeteArrive;
 	
-	private Planete planetDepart;
-	private Planete planetArrivé;
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -29,16 +48,16 @@ public class Etape {
 		this.arrivee = arrivee;
 	}
 	public Planete getPlanetDepart() {
-		return planetDepart;
+		return planeteDepart;
 	}
 	public void setPlanetDepart(Planete planetDepart) {
-		this.planetDepart = planetDepart;
+		this.planeteDepart = planetDepart;
 	}
 	public Planete getPlanetArrivé() {
-		return planetArrivé;
+		return planeteArrive;
 	}
 	public void setPlanetArrivé(Planete planetArrivé) {
-		this.planetArrivé = planetArrivé;
+		this.planeteArrive = planetArrivé;
 	}
 	public Etape() {
 		super();
