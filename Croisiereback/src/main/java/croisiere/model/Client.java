@@ -11,7 +11,7 @@ import javax.persistence.Transient;
 @Entity
 @DiscriminatorValue("customer")
 public class Client extends Compte {
-	@Transient
+	@OneToMany(mappedBy ="client")
 	private List<Reservation> reservations=new ArrayList<>();
 	@OneToMany(mappedBy="client")
 	private List<Avis> listeAvis=new ArrayList<>();

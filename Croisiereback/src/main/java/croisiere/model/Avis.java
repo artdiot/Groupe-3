@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name= "clientcomment")
+@Table(name= "review")
 public class Avis {
 
 	@Id
