@@ -35,6 +35,4 @@ public class Adresse {
 		this.rue = rue;
 	}
 	
-	
-	
 }

@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 public class Application {
 	private static Application instance = null;
 
+	private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("croisiere");
 
 
 	private Application() {
@@ -19,4 +20,10 @@ public class Application {
 
 		return instance;
 	}
+
+	public EntityManagerFactory getEmf() {
+		return emf;
+	}
+	
+	
 }
