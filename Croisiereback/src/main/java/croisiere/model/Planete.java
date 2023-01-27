@@ -23,6 +23,8 @@ public class Planete {
 	private double positionZ;
 	
 	
+	
+	
 	public Integer getId() {
 		return id;
 	}

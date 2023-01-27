@@ -34,7 +34,8 @@ public class Reservation {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id")
 	private Client client;
-	@Transient
+	@ManyToOne
+	@JoinColumn(name = "travel_id")
 	private Voyage voyage;
 	
 	public Reservation() {
