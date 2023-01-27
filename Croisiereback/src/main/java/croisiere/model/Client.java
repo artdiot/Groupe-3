@@ -1,9 +1,10 @@
 package croisiere.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Client extends Compte {
-	private List<Reservation> reservations;
+	private List<Reservation> reservations=new ArrayList<>();
 	
 	public Client() {
 		super();
