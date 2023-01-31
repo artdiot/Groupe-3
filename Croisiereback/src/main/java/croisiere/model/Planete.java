@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "travel")
+@Table(name = "planet")
 public class Planete {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +22,21 @@ public class Planete {
 	@Column(name = "positionZ")
 	private double positionZ;
 	
+	public Planete() {
+		super();
+	}	
 	
-	
-	
+	public Planete(String nom, double positionX, double positionY, double positionZ) {
+		super();
+		this.nom = nom;
+		this.positionX = positionX;
+		this.positionY = positionY;
+		this.positionZ = positionZ;
+	}
+
+
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -55,9 +67,7 @@ public class Planete {
 	public void setPositionZ(double positionZ) {
 		this.positionZ = positionZ;
 	}
-	public Planete() {
-		super();
-	}	
+
 	
 	
 		

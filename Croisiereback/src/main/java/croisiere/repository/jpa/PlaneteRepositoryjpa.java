@@ -4,153 +4,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
-import croisiere.context.Application;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 import croisiere.model.Planete;
 import croisiere.repository.IPlaneteRepository;
-
+@Repository
 public class PlaneteRepositoryjpa implements IPlaneteRepository{
+
+	@PersistenceContext
+	private EntityManager em;
 
 	@Override
 	public List<Planete> findAll() {
 		List<Planete> planetes = new ArrayList<>();
-
-		EntityManager em = null;
-		EntityTransaction tx = null;
-
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			TypedQuery<Planete> query = em.createQuery("select p from Planete p", Planete.class);
-
-			planetes = query.getResultList();
-
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
-
+		TypedQuery<Planete> query = em.createQuery("select p from Planete p", Planete.class);
+		planetes = query.getResultList();
 		return planetes;
 	}
 
 	@Override
 	public Planete findById(Integer id) {
 		Planete planete = null;
-
-		EntityManager em = null;
-		EntityTransaction tx = null;
-
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			planete = em.find(Planete.class, id);
-
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
-
+		planete = em.find(Planete.class, id);
 		return planete;
 	}
 
 	@Override
+	@Transactional
 	public Planete save(Planete o) {
-		EntityManager em = null;
-		EntityTransaction tx = null;
-
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			o = em.merge(o);
-
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
-
+		o = em.merge(o);
 		return o;
 	}
 
 	@Override
+	@Transactional
 	public void deleteById(Integer id) {
-		EntityManager em = null;
-		EntityTransaction tx = null;
-
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			TypedQuery<Planete> query = em.createQuery("delete from Planete p where p.id = :id", Planete.class);
-			query.setParameter("id", id);
-
-			query.executeUpdate();
-
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
+		TypedQuery<Planete> query = em.createQuery("delete from Planete p where p.id = :id", Planete.class);
+		query.setParameter("id", id);
+		query.executeUpdate();
 	}
 
 	@Override
+	@Transactional
 	public void delete(Planete o) {
-		EntityManager em = null;
-		EntityTransaction tx = null;
-
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			em.remove(em.merge(o));
-
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
+		em.remove(em.merge(o));
 	}
-
 }
