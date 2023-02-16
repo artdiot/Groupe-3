@@ -11,6 +11,10 @@ public class Views {
 	public class ViewVoyage extends ViewBase{
 		
 	}
+	
+	public class ViewEtape extends ViewBase{
+		
+	}
 }
 
 	
