@@ -9,29 +9,44 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 @Table(name = "travel")
 public class Voyage {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
+	@Version
+	@JsonView(Views.ViewBase.class)
+	private int version;
 	@Column(name = "price")
+	@JsonView(Views.ViewBase.class)
 	private double prix;
 	@Column(name = "distance")
+	@JsonView(Views.ViewBase.class)
 	private double distance;
 	@Column(name = "duration")
+	@JsonView(Views.ViewBase.class)
 	private int duree;
 	@Column(name = "capacity")
+	@JsonView(Views.ViewBase.class)
 	private int capacite;
 
 	@OneToMany(mappedBy = "voyage")
+	@JsonView(Views.ViewVoyage.class)
 	private List<Etape> etapes = new ArrayList<>();
 	@OneToMany(mappedBy = "voyage")
+	@JsonView(Views.ViewVoyage.class)
 	private List<Reservation> reservations = new ArrayList<>();
 	@OneToMany(mappedBy = "voyage")
+	@JsonView(Views.ViewVoyage.class)
 	private List<Avis> avis = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "voyage")
+	@JsonView(Views.ViewVoyage.class)
 	private List<EquipageVoyage> equipageVoyage = new ArrayList<>();	
 	
 	
