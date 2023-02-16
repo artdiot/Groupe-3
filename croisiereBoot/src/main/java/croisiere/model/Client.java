@@ -7,12 +7,16 @@ import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 @DiscriminatorValue("customer")
 public class Client extends Compte {
 	@OneToMany(mappedBy ="client")
+	@JsonView(Views.ViewClient.class)
 	private List<Reservation> reservations=new ArrayList<>();
 	@OneToMany(mappedBy="client")
+	@JsonView(Views.ViewClient.class)
 	private List<Avis> listeAvis=new ArrayList<>();
 	
 	public Client() {

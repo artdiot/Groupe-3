@@ -3,16 +3,22 @@ package croisiere.model;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 @Embeddable
 public class Adresse {
 	@Column(name="planete")
+	@JsonView(Views.ViewBase.class)
 	private String planete;
 	@Column(name="district")
+	@JsonView(Views.ViewBase.class)
 	private String district;
 	@Column(name="city")
+	@JsonView(Views.ViewBase.class)
 	private String ville;
 	@Column(name="street")
+	@JsonView(Views.ViewBase.class)
 	private String rue;
 	
 	public Adresse() {
