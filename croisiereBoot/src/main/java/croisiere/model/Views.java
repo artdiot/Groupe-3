@@ -15,6 +15,10 @@ public class Views {
 	public class ViewEtape extends ViewBase{
 		
 	}
+	
+	public class ViewClient extends ViewBase{
+		
+	}
 }
 
 	
