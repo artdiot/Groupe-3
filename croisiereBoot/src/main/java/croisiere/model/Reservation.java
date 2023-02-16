@@ -14,7 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name="booking")
@@ -22,20 +24,30 @@ public class Reservation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
+	@Version
+	@JsonView(Views.ViewBase.class)
+	private int version;
 	@Column(name = "price", length = 10)
+	@JsonView(Views.ViewBase.class)	
 	private double prix;
 	@Column(name="departure_date", length = 10)
+	@JsonView(Views.ViewBase.class)
 	private LocalDate date;
 	@Column(name="class")
+	@JsonView(Views.ViewBase.class)
 	private int classe;
 	@OneToMany(mappedBy ="reservation")
+	@JsonView(Views.ViewReservation.class)
 	private List<Passager> passagers = new ArrayList<>();
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id")
+	@JsonView(Views.ViewReservation.class)
 	private Client client;
 	@ManyToOne
 	@JoinColumn(name = "travel_id")
+	@JsonView(Views.ViewReservation.class)
 	private Voyage voyage;
 	
 	public Reservation() {
