@@ -7,3 +7,9 @@ public class Views {
 	public class ViewReservation extends ViewBase{
 	}
 }
+
+	public static class ViewVoyage extends ViewBase{
+		
+	}
+	
+}
