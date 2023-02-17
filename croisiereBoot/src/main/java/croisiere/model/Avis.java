@@ -9,7 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name= "review")
@@ -17,16 +18,21 @@ public class Avis {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
 	@Column(name="score", length = 5)
+	@JsonView(Views.ViewBase.class)
 	private int note;
 	@Column(name="comment", length = 255)
+	@JsonView(Views.ViewBase.class)
 	private String commentaire;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="customer_id")
+	@JsonView(Views.ViewAvis.class)
 	private Client client;
 	@ManyToOne
 	@JoinColumn(name = "travel_id")
+	@JsonView(Views.ViewAvis.class)
 	private Voyage voyage;
 	
 	
