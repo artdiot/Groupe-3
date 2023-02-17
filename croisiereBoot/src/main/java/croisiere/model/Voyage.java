@@ -1,4 +1,4 @@
-package croisiere.model;
+	package croisiere.model;
 import java.util.ArrayList;
 import java.util.List;
 

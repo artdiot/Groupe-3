@@ -6,20 +6,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name = "planet")
 public class Planete {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
+	@Version
+	@JsonView(Views.ViewBase.class)
+	private int version;
 	@Column(name = "name")
+	@JsonView(Views.ViewBase.class)
 	private String nom;
 	@Column(name = "positionX")
+	@JsonView(Views.ViewBase.class)
 	private double positionX;
 	@Column(name = "positionY")
+	@JsonView(Views.ViewBase.class)
 	private double positionY;	
 	@Column(name = "positionZ")
+	@JsonView(Views.ViewBase.class)
 	private double positionZ;
 	
 	public Planete() {
