@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core';reservation
+import { reservationService } from '../service/reservation.service';
 
 @Component({
   selector: 'app-accueil-client',
@@ -7,4 +8,42 @@ import { Component } from '@angular/core';
 })
 export class AccueilClientComponent {
 
+  formReservation: Reservation = null;
+
+  constructor(private reservationService: reservationService) {
+  }
+
+  listReservation(): Array<Reservation> {
+    return this.reservationService.findAll();
+  }
+
+  addReservation(): void {
+    this.formReservation = new Reservation();
+  }
+
+  editReservation(id: number): void {
+    this.reservationService.findById(id).subscribe(response => {
+      this.formReservation = response;
+    });
+  }
+
+  saveReservation(): void {
+    if(this.formReservation.id) { // UPDATE
+      this.reservationService.update(this.formReservation);
+    } else { // CREATE
+      this.reservationService.create(this.formReservation);
+    }
+
+    this.cancel();
+  }
+
+  removeReservation(id: number): void {
+    this.reservationService.remove(id);
+  }
+
+  cancel(): void {
+    this.formReservation = null;
+  }
 }
+
+
