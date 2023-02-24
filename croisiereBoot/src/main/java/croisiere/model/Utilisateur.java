@@ -1,19 +1,12 @@
 package croisiere.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,8 +31,6 @@ public class Utilisateur {
 	@Column(name = "first_name", length = 100)
 	@JsonView(Views.ViewBase.class)
 	private String prenom;
-	@JsonView(Views.ViewBase.class)
-	private boolean disabled = false;
 	@Column(name = "role", nullable = false)
 	@Enumerated(EnumType.STRING)
 	@JsonView(Views.ViewUtilisateur.class)
@@ -52,13 +43,12 @@ public class Utilisateur {
 		super();
 	}
 
-	public Utilisateur(String identifiant, String motDePasse, String nom, String prenom, boolean disabled) {
+	public Utilisateur(String identifiant, String motDePasse, String nom, String prenom) {
 		super();
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.disabled = disabled;
 	}
 
 	public Integer getId() {
@@ -99,14 +89,6 @@ public class Utilisateur {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-	}
-
-	public boolean isDisabled() {
-		return disabled;
-	}
-
-	public void setDisabled(boolean disabled) {
-		this.disabled = disabled;
 	}
 
 	public Role getRoles() {
