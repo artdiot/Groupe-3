@@ -37,19 +37,21 @@ public class Utilisateur {
 	private Role role;
 
 	@OneToOne(mappedBy = "utilisateur")
+	@JsonView(Views.ViewBase.class)
 	private Compte compte;
 
 	public Utilisateur() {
 		super();
 	}
 
-	public Utilisateur(String identifiant, String motDePasse, String nom, String prenom, Role role) {
+	public Utilisateur(String identifiant, String motDePasse, String nom, String prenom, Role role, Compte compte) {
 		super();
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.role=role;
+		this.compte=compte;
 	}
 
 	public Integer getId() {

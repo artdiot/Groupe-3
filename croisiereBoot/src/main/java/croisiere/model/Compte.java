@@ -43,6 +43,7 @@ public abstract class Compte {
 	private Adresse adresse;
 	@OneToOne
 	@JoinColumn(name = "user_id")
+	@JsonView(Views.ViewBase.class)
 	private Utilisateur utilisateur;
 	
 	
