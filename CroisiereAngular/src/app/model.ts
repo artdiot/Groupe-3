@@ -151,14 +151,16 @@ export class Utilisateur{
     nom:string;
     prenom:string;
     role:string;
+    compte:Compte;
 
-    constructor(id?:number,identifiant?:string,motDePasse?:string,nom?:string,prenom?:string,role?:string){
+    constructor(id?:number,identifiant?:string,motDePasse?:string,nom?:string,prenom?:string,role?:string,compte?:Compte){
         this.id=id;
         this.identifiant=identifiant;
         this.motDePasse=motDePasse;
         this.nom=nom;
         this.prenom=prenom;
         this.role=role;
+        this.compte=compte;
     }
 }
 

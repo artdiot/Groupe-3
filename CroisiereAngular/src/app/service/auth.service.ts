@@ -17,12 +17,13 @@ export class AuthService {
       password: password
     }).subscribe((resp: any) => {
       this.connected = resp;
+      console.log(this.connected.compte);
       if (this.connected) {
         if (this.connected.role == "CLIENT") {
-          this.router.navigate(['/accueilclient'])
+          this.router.navigate(['/accueilclient',{id: this.connected.compte.id}])
         }
         if(this.connected.role=="ADMIN"){
-          this.router.navigate(['/accueiladmin'])
+          this.router.navigate(['/accueiladmin',{id: this.connected.compte.id}])
         }
       }
     }
