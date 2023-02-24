@@ -18,9 +18,7 @@ export class PassagerService {
     return this.passagers;
   }
 
-  findAllOrphans(id?: number): Observable<Array<Passager>> {
-    return this.http.get<Array<Passager>>("http://localhost:8888/passager/orphans/"+(id?id:""));
-  }
+
 
   findById(id: number): Observable<Passager> {
     return this.http.get<Passager>("http://localhost:8888/passager/" + id);
