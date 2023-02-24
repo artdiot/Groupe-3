@@ -14,6 +14,8 @@ import croisiere.model.Adresse;
 import croisiere.model.Client;
 import croisiere.model.Etape;
 import croisiere.model.Planete;
+import croisiere.model.Role;
+import croisiere.model.Utilisateur;
 import croisiere.model.Voyage;
 import croisiere.repository.AdminRepository;
 import croisiere.repository.AvisRepository;
@@ -21,6 +23,7 @@ import croisiere.repository.ClientRepository;
 import croisiere.repository.EtapeRepository;
 import croisiere.repository.PlaneteRepository;
 import croisiere.repository.ReservationRepository;
+import croisiere.repository.UtilisateurRepository;
 import croisiere.repository.VoyageRepository;
 
 @SpringBootTest(classes=CroisiereBootApplication.class)
@@ -40,6 +43,8 @@ class RemplissageTest {
 	private VoyageRepository voyageRepo;
 	@Autowired 
 	private AdminRepository adminRepo;
+	@Autowired
+	private UtilisateurRepository utilisateurRepo;
 	
 	
 	@Test
@@ -89,5 +94,13 @@ class RemplissageTest {
 		Adresse a3 = new Adresse("LA planète","district de ouf","Superville","10 rue trop cool");
 		Admin ad1 = new Admin("ISTRATEUR","Admin","ad.mini.stra@teur",a3);
 		adminRepo.save(ad1);
+		
+		Utilisateur u1 = new Utilisateur("Arthur", "Diot", "Arthur", "Diot",Role.ADMIN);
+		utilisateurRepo.save(u1);
+		Utilisateur u2 = new Utilisateur("florian","123456","RIAN","FLO",Role.CLIENT);
+		utilisateurRepo.save(u2);
+		
+		
+		
 	}
 }

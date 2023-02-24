@@ -43,12 +43,13 @@ public class Utilisateur {
 		super();
 	}
 
-	public Utilisateur(String identifiant, String motDePasse, String nom, String prenom) {
+	public Utilisateur(String identifiant, String motDePasse, String nom, String prenom, Role role) {
 		super();
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
 		this.nom = nom;
 		this.prenom = prenom;
+		this.role=role;
 	}
 
 	public Integer getId() {

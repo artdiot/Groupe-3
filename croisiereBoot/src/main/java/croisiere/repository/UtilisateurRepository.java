@@ -10,7 +10,7 @@ import croisiere.model.Utilisateur;
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Integer> {
 	Optional<Utilisateur> findByIdentifiant(String identifiant);
 	
-	@Query("select u from Utilisateur u where u.identifiant = ?1 and u.motDePasse = ?2 and disabled = false")
+	@Query("select u from Utilisateur u where u.identifiant = ?1 and u.motDePasse = ?2")
 	Optional<Utilisateur> findByLoginAndMotDePasse(String login, String password);
 }
 
