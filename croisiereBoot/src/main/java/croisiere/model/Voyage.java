@@ -55,7 +55,7 @@ public class Voyage {
 		super();
 	}
 	
-	public Voyage(double prix, double distance, int duree, int capacite, List<Etape> etapes) {
+	public Voyage(double prix, double distance, int duree, int capacite) {
 		super();
 		this.prix = prix;
 		this.distance = distance;
