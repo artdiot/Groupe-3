@@ -5,8 +5,12 @@ public class Views {
 	public class ViewBase{
 	}
 	
-	public class ViewReservation extends ViewBase{
+	public class ViewReservation extends ViewReservationInfo{
 	}
+	
+	public class ViewReservationInfo extends ViewBase{
+	}
+	
 	
 	public class ViewVoyage extends ViewBase{
 		
@@ -23,6 +27,10 @@ public class Views {
 	}
 	
 	public class ViewAvis extends ViewBase{
+	}
+	
+	public class ViewPassager extends ViewReservationInfo{
+		
 	}
 }
 

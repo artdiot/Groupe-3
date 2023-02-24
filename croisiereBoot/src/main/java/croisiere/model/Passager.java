@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name ="passenger")
@@ -18,15 +21,23 @@ public class Passager {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
+	@Version
+	@JsonView(Views.ViewBase.class)
+	private int version;
 	@Column (name="surname", length = 100)
+	@JsonView(Views.ViewBase.class)
 	private String nom;
 	@Column (name="firstname", length = 100)
+	@JsonView(Views.ViewBase.class)
 	private String prenom;
 	@Column(name = "birthdate", length = 10)
+	@JsonView(Views.ViewBase.class)
 	private LocalDate dateNaissance;
 	@ManyToOne (fetch = FetchType.LAZY)
 	@JoinColumn(name = "booking_id")
+	@JsonView(Views.ViewPassager.class)
 	private Reservation reservation;
 	
 	public Passager() {
