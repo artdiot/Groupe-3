@@ -31,6 +31,12 @@
         <div class="form-group">
             <label for="rue">Adresse : Rue</label> <input type="string" class="form-control" id="rue" name="rue" [(ngModel)]="formClient.adresse.rue" />
         </div>
+        <div class="form-group">
+            <label for="login">login</label> <input type="string" class="form-control" id="login" name="login" [(ngModel)]="formUtil.identifiant" />
+        </div>
+        <div class="form-group">
+            <label for="password">password</label> <input type="string" class="form-control" id="password" name="password" [(ngModel)]="formUtil.motDePasse" />
+        </div>
     </div>
     <div class="card-footer">
         <div class="btn-group btn-group-lg float-right">
