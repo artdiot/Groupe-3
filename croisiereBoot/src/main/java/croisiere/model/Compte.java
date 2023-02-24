@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -27,10 +29,6 @@ public abstract class Compte {
 	@Version
 	@JsonView(Views.ViewBase.class)
 	private int version;
-	@JsonView(Views.ViewBase.class)
-	private String login;
-	@JsonView(Views.ViewBase.class)
-	private String password;
 	@Column(name="surname")
 	@JsonView(Views.ViewBase.class)
 	private String nom;
@@ -43,6 +41,11 @@ public abstract class Compte {
 	@Embedded
 	@JsonView(Views.ViewBase.class)
 	private Adresse adresse;
+	@OneToOne
+	@JoinColumn(name = "user_id")
+	private Utilisateur utilisateur;
+	
+	
 	
 	public Compte() {
 		super();
@@ -50,10 +53,8 @@ public abstract class Compte {
 	
 	
 	
-	public Compte(String login, String password, String nom, String prenom, String email, Adresse adresse) {
+	public Compte(String nom, String prenom, String email, Adresse adresse) {
 		super();
-		this.login = login;
-		this.password = password;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
@@ -70,27 +71,6 @@ public abstract class Compte {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
-	public String getLogin() {
-		return login;
-	}
-
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 
 	public String getNom() {
 		return nom;
@@ -129,6 +109,18 @@ public abstract class Compte {
 
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
+	}
+
+
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 	
 	

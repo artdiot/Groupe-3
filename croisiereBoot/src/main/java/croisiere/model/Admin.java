@@ -10,8 +10,8 @@ public class Admin extends Compte {
 		super();
 	}
 
-	public Admin(String login, String password, String nom, String prenom, String email, Adresse adresse) {
-		super(login, password, nom, prenom, email, adresse);
+	public Admin(String nom, String prenom, String email, Adresse adresse) {
+		super(nom, prenom, email, adresse);
 	}
 
 }

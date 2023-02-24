@@ -23,6 +23,9 @@ public class Views {
 	
 	public class ViewClient extends ViewBase{
 	}
+	public class ViewAdmin extends ViewBase{
+		
+	}
 	public class ViewPlanete extends ViewBase{
 	}
 	
@@ -32,6 +35,11 @@ public class Views {
 	public class ViewPassager extends ViewReservationInfo{
 		
 	}
+	
+	public class ViewUtilisateur extends ViewBase{
+		
+	}
+	
 }
 
 	
