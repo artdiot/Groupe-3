@@ -43,11 +43,11 @@ public class Reservation {
 	private List<Passager> passagers = new ArrayList<>();
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id")
-	@JsonView(Views.ViewReservation.class)
+	@JsonView(Views.ViewReservationInfo.class)
 	private Client client;
 	@ManyToOne
 	@JoinColumn(name = "travel_id")
-	@JsonView(Views.ViewReservation.class)
+	@JsonView(Views.ViewReservationInfo.class)
 	private Voyage voyage;
 	
 	public Reservation() {
