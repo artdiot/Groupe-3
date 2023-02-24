@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Passager } from '../model';
-import { PassagerService } from './passager.service';
+import { PassagerService } from '../service/passager.service';
 
 
 
