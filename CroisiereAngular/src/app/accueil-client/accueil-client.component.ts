@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';reservation
+import { Component } from '@angular/core';
+import { Reservation } from '../model';
 import { reservationService } from '../service/reservation.service';
 
 @Component({
