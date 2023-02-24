@@ -1,0 +1,24 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Identifiant</th>
+            <th>Version</th>
+            <th>nom</th>
+            <th>prenom</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let ordi of list()">
+            <td>{{ordi.id}}</td>
+            <td>{{ordi.version}}</td>
+            <td>{{ordi.nom}}</td>
+            <td>{{ordi.prenom}}</td>
+            <td>
+               
+            </td>
+        </tr>
+    </tbody>
+
+</table>
