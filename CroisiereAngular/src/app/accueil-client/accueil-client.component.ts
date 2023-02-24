@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Reservation } from '../model';
 import { reservationService } from '../service/reservation.service';
 
@@ -10,8 +11,13 @@ import { reservationService } from '../service/reservation.service';
 export class AccueilClientComponent {
 
   formReservation: Reservation = null;
+  id:number;
 
-  constructor(private reservationService: reservationService) {
+  constructor(private reservationService: reservationService, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.id=params["id"];
+      console.log(this.id);
+      });
   }
 
   listReservation(): Array<Reservation> {

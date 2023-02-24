@@ -12,6 +12,7 @@ import croisiere.CroisiereBootApplication;
 import croisiere.model.Admin;
 import croisiere.model.Adresse;
 import croisiere.model.Client;
+import croisiere.model.Compte;
 import croisiere.model.Etape;
 import croisiere.model.Planete;
 import croisiere.model.Role;
@@ -96,9 +97,12 @@ class RemplissageTest {
 		adminRepo.save(ad1);
 		
 		Utilisateur u1 = new Utilisateur("Arthur", "Diot", "Arthur", "Diot",Role.ADMIN);
+		u1.setCompte(ad1);
 		utilisateurRepo.save(u1);
-		Utilisateur u2 = new Utilisateur("florian","123456","RIAN","FLO",Role.CLIENT);
+		Utilisateur u2 = new Utilisateur("florian","123456","RIAN","Flo",Role.CLIENT);
+		u2.setCompte(c2);
 		utilisateurRepo.save(u2);
+
 		
 		
 		

@@ -100,11 +100,11 @@ public class Utilisateur {
 		this.role = role;
 	}
 
-	public Compte getPersonne() {
+	public Compte getCompte() {
 		return compte;
 	}
 
-	public void setPersonne(Compte compte) {
+	public void setCompte(Compte compte) {
 		this.compte = compte;
 	}
 
