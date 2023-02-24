@@ -6,11 +6,19 @@ import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule }from '@angular/common/http';
+import { AccueilClientComponent } from './accueil-client/accueil-client.component';
+import { AccueilAdminComponent } from './accueil-admin/accueil-admin.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccueilComponent
+    AccueilComponent,
+    AccueilClientComponent,
+    AccueilAdminComponent,
+    InscriptionComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,
