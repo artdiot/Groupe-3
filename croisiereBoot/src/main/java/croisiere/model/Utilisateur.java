@@ -40,8 +40,6 @@ public class Utilisateur {
 	private String prenom;
 	@JsonView(Views.ViewBase.class)
 	private boolean disabled = false;
-	@ElementCollection(fetch = FetchType.EAGER)
-	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "users_id"))
 	@Column(name = "role", nullable = false)
 	@Enumerated(EnumType.STRING)
 	@JsonView(Views.ViewUtilisateur.class)
