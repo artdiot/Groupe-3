@@ -25,6 +25,18 @@ public class Adresse {
 		super();
 	}
 	
+	
+	
+	public Adresse(String planete, String district, String ville, String rue) {
+		super();
+		this.planete = planete;
+		this.district = district;
+		this.ville = ville;
+		this.rue = rue;
+	}
+
+
+
 	public String getPlanete() {
 		return planete;
 	}
