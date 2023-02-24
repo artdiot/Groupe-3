@@ -20,8 +20,9 @@ public class Views {
 	public class ViewClient extends ViewBase{
 	}
 	public class ViewPlanete extends ViewBase{
-
-		
+	}
+	
+	public class ViewAvis extends ViewBase{
 	}
 }
 
