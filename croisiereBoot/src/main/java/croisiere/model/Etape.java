@@ -48,6 +48,22 @@ public class Etape {
 	@JsonView(Views.ViewEtape.class)
 	private Voyage voyage;
 	
+	public Etape() {
+		super();
+	}
+	
+	public Etape(LocalDate depart, LocalDate arrivee, Planete planeteDepart,
+			Planete planeteArrive, Voyage voyage) {
+		super();
+		this.depart = depart;
+		this.arrivee = arrivee;
+		this.planeteDepart = planeteDepart;
+		this.planeteArrive = planeteArrive;
+		this.voyage = voyage;
+	}
+
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -78,9 +94,7 @@ public class Etape {
 	public void setPlanetArrivé(Planete planetArrivé) {
 		this.planeteArrive = planetArrivé;
 	}
-	public Etape() {
-		super();
-	}
+
 	
 	
 	

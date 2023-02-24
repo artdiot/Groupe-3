@@ -30,7 +30,7 @@ public class MembreEquipage extends Compte{
 	public MembreEquipage(String login, String password, String nom, String prenom, 
 			String email, Adresse adresse, double salaire, Metier metier, int niveauAcces,
 			boolean disponible, int experience) {
-		super(login, password, nom, prenom, email, adresse);
+		super(nom, prenom, email, adresse);
 		this.salaire = salaire;
 		this.metier = metier;
 		this.niveauAcces = niveauAcces;
