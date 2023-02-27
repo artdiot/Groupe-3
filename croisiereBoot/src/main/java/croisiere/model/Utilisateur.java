@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -20,6 +21,9 @@ public class Utilisateur {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(Views.ViewBase.class)
 	private Integer id;
+	@Version
+	@JsonView(Views.ViewBase.class)
+	private int version;
 	@Column(name = "login", length = 100, nullable = false, unique = true)
 	@JsonView(Views.ViewBase.class)
 	private String identifiant;
@@ -46,12 +50,14 @@ public class Utilisateur {
 		super();
 	}
 
-	public Utilisateur(String identifiant, String motDePasse, String nom, String prenom) {
+	public Utilisateur(String identifiant, String motDePasse, String nom, String prenom, Role role, Compte compte) {
 		super();
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
 		this.nom = nom;
 		this.prenom = prenom;
+		this.role=role;
+		this.compte=compte;
 	}
 
 	public Integer getId() {
@@ -102,11 +108,11 @@ public class Utilisateur {
 		this.role = role;
 	}
 
-	public Compte getPersonne() {
+	public Compte getCompte() {
 		return compte;
 	}
 
-	public void setPersonne(Compte compte) {
+	public void setCompte(Compte compte) {
 		this.compte = compte;
 	}
 

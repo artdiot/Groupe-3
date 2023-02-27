@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Passager } from '../model';
-import { AccueilService } from './accueil.service';
+import { PassagerService } from '../service/passager.service';
+
+
 
 @Component({
   selector: 'accueil',
@@ -9,10 +11,10 @@ import { AccueilService } from './accueil.service';
 })
 export class AccueilComponent {
 
-  constructor(private accueilService: AccueilService) {
+  constructor(private servicePassager: PassagerService) {
   }
 
   list(): Array<Passager> {
-    return this.accueilService.findAll();
+    return this.servicePassager.findAll();
   }
 }

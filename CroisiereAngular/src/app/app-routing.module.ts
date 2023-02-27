@@ -8,8 +8,8 @@ import { InscriptionComponent } from './inscription/inscription.component';
 
 const routes: Routes = [
   {path: "", component: AccueilComponent, pathMatch: 'full'},
-  {path: "client", component: AccueilClientComponent},
-  {path: "admin", component: AccueilAdminComponent},
+  {path: "accueilclient", component: AccueilClientComponent},
+  {path: "accueiladmin", component: AccueilAdminComponent},
   {path: "connexion", component: ConnexionComponent},
   {path: "inscription", component: InscriptionComponent}
 ];
