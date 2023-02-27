@@ -12,6 +12,7 @@ import { ClientService } from '../service/client.service';
 })
 export class AccueilClientComponent {
 
+  
   formReservation: Reservation = null;
   id:number;
   client:Client=new Client();
