@@ -25,6 +25,7 @@ export class UtilisateurService {
   }
 
   create(utilisateur: Utilisateur): void {
+    console.log("coucou2");
     this.http.post<Utilisateur>("http://localhost:8888/utilisateur", utilisateur).subscribe(resp => {
       this.load();
     });

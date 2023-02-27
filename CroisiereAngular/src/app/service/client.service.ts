@@ -1,16 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Client } from '../model';
+import { Client, Utilisateur } from '../model';
+import { UtilisateurService } from './utilisateur.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
 
+  utilisateur: Utilisateur = new Utilisateur();
   clients: Array<Client> = new Array<Client>();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private utilisateurService: UtilisateurService) {
     this.load();
   }
 
@@ -23,15 +25,54 @@ export class ClientService {
     return this.http.get<Client>("http://localhost:8888/client/" + id);
   }
 
-  create(client: Client): void {
+  findByNom(nom: string): Observable<Client> {
+    return this.http.get<Client>("http://localhost:8888/client/nom/" + nom);
+  }
+
+
+  /*   create(client: Client, identifiant: string, motdepasse: string): void {
+      this.http.post<Client>("http://localhost:8888/client", client).subscribe(resp => {
+  
+      console.log("ça marche");
+  
+      this.http.get<Client>("http://localhost:8888/client/nom/" + client.nom).subscribe(resp2=>{
+        
+      console.log("coucou");
+        this.utilisateur.nom=resp2.nom;
+        this.utilisateur.prenom=resp2.prenom;
+        this.utilisateur.role="CLIENT";
+        this.utilisateur.compte= resp2;
+        this.utilisateur.identifiant=identifiant;
+        this.utilisateur.motDePasse=motdepasse;
+        this.utilisateurService.create(this.utilisateur);
+  
+      })
+        
+      });
+    } */
+
+  create(client: Client, identifiant: string, motdepasse: string): void {
     this.http.post<Client>("http://localhost:8888/client", client).subscribe(resp => {
-      this.load();
-    });
+
+      console.log("ça marche");
+
+      this.http.get<Client>("http://localhost:8888/client/nom/" + client.nom).subscribe(resp2 => {
+        this.utilisateur.nom=resp2.nom;
+        this.utilisateur.prenom=resp2.prenom;
+        this.utilisateur.role="CLIENT";
+        this.utilisateur.identifiant=identifiant;
+        this.utilisateur.motDePasse=motdepasse;
+        this.http.post<Utilisateur>("http://localhost:8888/utilisateur/inscription/client/" + resp2.id, this.utilisateur).subscribe(resp3 => {
+
+        })
+      })
+    })
   }
 
   update(client: Client): void {
     this.http.put<Client>("http://localhost:8888/client/" + client.id, client).subscribe(resp => {
       this.load();
+
     });
   }
 

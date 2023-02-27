@@ -48,6 +48,18 @@ public class ClientRestController {
 
 		return optClient.get();
 	}
+	
+	@GetMapping("/nom/{nom}")
+	@JsonView(Views.ViewClient.class)
+	public Client findByNom(@PathVariable String nom) {
+		Optional<Client> optClient = clientRepository.findByNom(nom);
+
+		if (optClient.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+
+		return optClient.get();
+	}
 
 	@PostMapping("")
 	@JsonView(Views.ViewClient.class)

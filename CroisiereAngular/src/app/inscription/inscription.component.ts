@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { Adresse, Client, Utilisateur } from '../model';
 import { ClientService } from '../service/client.service';
 import { UtilisateurService } from '../service/utilisateur.service';
@@ -12,10 +13,14 @@ export class InscriptionComponent {
 
   formClient: Client = new Client();
   formUtil: Utilisateur = new Utilisateur();
+  validate: boolean;
   
   
-    constructor(private clientService: ClientService, private utilisateurService: UtilisateurService) {
+  
+    constructor(private clientService: ClientService, private utilisateurService: UtilisateurService, private router :Router) {
       this.formClient.adresse=new Adresse();
+      this.validate=false;
+
     }
   
     list(): Array<Client> {
@@ -26,6 +31,7 @@ export class InscriptionComponent {
       this.formClient = new Client();
       this.formClient.adresse=new Adresse();
       this.formUtil=new Utilisateur();
+      
     }
   
     edit(id: number): void {
@@ -34,26 +40,64 @@ export class InscriptionComponent {
       });
     }
   
+/*     save(): void {
+      if(this.formClient.id) { // UPDATE
+        this.clientService.update(this.formClient);
+      } else { // CREATE
+       
+        this.clientService.create(this.formClient, this.formUtil.identifiant, this.formUtil.motDePasse);
+        this.router.navigate(['/']);
+       
+               
+      }
+      this.cancel();
+    } */
+
     save(): void {
       if(this.formClient.id) { // UPDATE
         this.clientService.update(this.formClient);
       } else { // CREATE
-        this.clientService.create(this.formClient);
-        this.formUtil.nom=this.formClient.nom;
-        this.formUtil.prenom=this.formClient.prenom;
-        
+       
+        this.clientService.create(this.formClient, this.formUtil.identifiant, this.formUtil.motDePasse);
+        this.router.navigate(['/']);
+       
+               
       }
-  
       this.cancel();
     }
-  
+    
+    suivant(){
+      console.log(this.formClient.nom);
+      this.clientService.findByNom(this.formClient.nom).subscribe(resp=>{
+        
+        this.formUtil.nom=resp.nom;
+        this.formUtil.prenom=resp.prenom;
+        this.formUtil.role="CLIENT";
+        this.formUtil.compte= resp
+        
+        });
+      
+    }
+    saveUtilisateur(){
+      if(this.formUtil.id) { // UPDATE
+        this.utilisateurService.update(this.formUtil);
+      } else { // CREATE
+        this.utilisateurService.create(this.formUtil);
+
+        
+                
+      }
+      this.cancel();
+    }
+
+
     remove(id: number): void {
       this.clientService.remove(id);
 
     }
   
     cancel(): void {
-      this.formClient.adresse=null;
+      
       this.formClient = null;
       this.formUtil=new Utilisateur();
     }
