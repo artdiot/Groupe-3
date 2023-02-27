@@ -11,6 +11,7 @@ import { AccueilAdminComponent } from './accueil-admin/accueil-admin.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     AccueilAdminComponent,
     InscriptionComponent,
     ConnexionComponent,
-    NavBarComponent
+    NavBarComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,

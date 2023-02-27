@@ -5,12 +5,14 @@ import { AccueilClientComponent } from './accueil-client/accueil-client.componen
 import { AccueilComponent } from './accueil/accueil.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 const routes: Routes = [
   {path: "", component: AccueilComponent, pathMatch: 'full'},
   {path: "accueilclient", component: AccueilClientComponent},
   {path: "accueiladmin", component: AccueilAdminComponent},
   {path: "connexion", component: ConnexionComponent},
+  {path: "reservation", component: ReservationComponent},
   {path: "inscription", component: InscriptionComponent}
 ];
 
