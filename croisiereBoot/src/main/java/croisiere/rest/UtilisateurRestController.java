@@ -80,6 +80,7 @@ public class UtilisateurRestController {
 	}
 	
 	@PostMapping("/auth")
+	@JsonView(Views.ViewUtilisateur.class)
 	public Utilisateur auth(@RequestBody AuthDTO authDTO) {
 		Optional<Utilisateur> optUtilisateur = utilisateurRepository.findByLoginAndMotDePasse(authDTO.getLogin(), authDTO.getPassword());
 	

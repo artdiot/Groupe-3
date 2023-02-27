@@ -39,10 +39,10 @@ public abstract class Compte {
 	@JsonView(Views.ViewBase.class)
 	private String email;
 	@Embedded
-	@JsonView(Views.ViewBase.class)
+	@JsonView(Views.ViewCompte.class)
 	private Adresse adresse;
 	@OneToOne(mappedBy = "compte")
-	@JsonView(Views.ViewBase.class)
+	@JsonView(Views.ViewCompte.class)
 	private Utilisateur utilisateur;
 	
 	
