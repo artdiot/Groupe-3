@@ -14,7 +14,7 @@ export class AccueilClientComponent {
   id:number;
 
   constructor(private reservationService: reservationService, private route: ActivatedRoute) {
-    this.route.queryParams.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.id=params["id"];
       console.log(this.id);
       });
