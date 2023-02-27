@@ -55,7 +55,7 @@ public class UtilisateurRestController {
 	public Utilisateur create(@RequestBody Utilisateur utilisateur) {
 		utilisateur = utilisateurRepository.save(utilisateur);
 
-		return utilisateur;
+		return utilisateur; 
 	}
 
 	@PutMapping("/{id}")

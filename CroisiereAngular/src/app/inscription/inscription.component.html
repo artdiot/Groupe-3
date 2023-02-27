@@ -1,6 +1,6 @@
 
 
-<div class="card mt-3">
+<div class="card mt-3" *ngIf="!validate">
     <div class="card-header bg-primary text-white display-6">Inscription d'un Client</div>
     <div class="card-body">
         <div class="form-group">
@@ -31,12 +31,7 @@
         <div class="form-group">
             <label for="rue">Adresse : Rue</label> <input type="string" class="form-control" id="rue" name="rue" [(ngModel)]="formClient.adresse.rue" />
         </div>
-        <div class="form-group">
-            <label for="login">login</label> <input type="string" class="form-control" id="login" name="login" [(ngModel)]="formUtil.identifiant" />
-        </div>
-        <div class="form-group">
-            <label for="password">password</label> <input type="string" class="form-control" id="password" name="password" [(ngModel)]="formUtil.motDePasse" />
-        </div>
+        
     </div>
     <div class="card-footer">
         <div class="btn-group btn-group-lg float-right">
@@ -44,4 +39,29 @@
             <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
         </div>
     </div>
+</div>
+
+
+<div class="card mt-3" *ngIf="validate">
+    <div class="card-header bg-primary text-white display-6">Inscription d'un Utilisateur</div>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="nomutil">Nom:</label> <input type="text" class="form-control" id="Nomutil" name="nomutil" [(ngModel)]="formUtil.nom" readonly />
+        </div>
+        <div class="form-group">
+            <label for="prenomutil">Prenom:</label> <input type="text" class="form-control" id="prenomutil" name="prenomutil" [(ngModel)]="formUtil.prenom"/>
+        </div>
+        <div class="form-group">
+            <label for="login">login</label> <input type="string" class="form-control" id="login" name="login" [(ngModel)]="formUtil.identifiant" />
+        </div>
+        <div class="form-group">
+            <label for="password">password</label> <input type="string" class="form-control" id="password" name="password" [(ngModel)]="formUtil.motDePasse" />
+        </div>
+    </div>
+<div class="card-footer">
+    <div class="btn-group btn-group-lg float-right">
+        <a class="btn btn-success" (click)="saveUtilisateur()"><i class="bi bi-check-square-fill"></i></a>
+        <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
+    </div>
+</div>
 </div>

@@ -23,15 +23,22 @@ export class ClientService {
     return this.http.get<Client>("http://localhost:8888/client/" + id);
   }
 
+  findByNom(nom:string): Observable<Client> {
+    return this.http.get<Client>("http://localhost:8888/client/nom/" + nom);
+  }
+
+
   create(client: Client): void {
     this.http.post<Client>("http://localhost:8888/client", client).subscribe(resp => {
       this.load();
+      
     });
   }
 
   update(client: Client): void {
     this.http.put<Client>("http://localhost:8888/client/" + client.id, client).subscribe(resp => {
       this.load();
+      
     });
   }
 
