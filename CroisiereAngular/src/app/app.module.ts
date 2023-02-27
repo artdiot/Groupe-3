@@ -12,6 +12,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { ListeReservationComponent } from './liste-reservation/liste-reservation.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ReservationComponent } from './reservation/reservation.component';
     InscriptionComponent,
     ConnexionComponent,
     NavBarComponent,
-    ReservationComponent
+    ReservationComponent,
+    ListeReservationComponent
   ],
   imports: [
     BrowserModule,

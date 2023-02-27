@@ -8,7 +8,8 @@ import { reservationService } from '../service/reservation.service';
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.scss']
 })
-export class OrdinateurComponent {
+export class ReservationComponent {
+  
   formReservation: Reservation = null;
 
   constructor(private reservationService: reservationService) {
