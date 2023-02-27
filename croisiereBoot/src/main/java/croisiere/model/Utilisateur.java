@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -36,7 +37,9 @@ public class Utilisateur {
 	@JsonView(Views.ViewUtilisateur.class)
 	private Role role;
 
-	@OneToOne(mappedBy = "utilisateur")
+	@OneToOne
+	@JoinColumn(name="account_id")
+	@JsonView(Views.ViewBase.class)
 	private Compte compte;
 
 	public Utilisateur() {
