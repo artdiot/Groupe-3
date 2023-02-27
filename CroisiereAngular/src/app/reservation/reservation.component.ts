@@ -8,5 +8,5 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./reservation.component.scss']
 })
 export class ReservationComponent {
-
+  
 }
