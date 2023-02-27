@@ -35,13 +35,13 @@ public class Etape {
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "planet_departure_id")
-	@JsonView(Views.ViewEtape.class)
+	@JsonView(Views.ViewBase.class)
 	private Planete planeteDepart;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "planet_arrival_id")
-	@JsonView(Views.ViewEtape.class)
-	private Planete planeteArrive;
+	@JsonView(Views.ViewBase.class)
+	private Planete planeteArrivee;
 	
 	@ManyToOne
 	@JoinColumn(name = "travel_id")
