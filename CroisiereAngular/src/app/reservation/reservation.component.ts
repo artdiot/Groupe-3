@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Reservation } from '../model';
-import { reservationService } from '../service/reservation.service';
+import { ReservationService } from '../service/reservation.service';
 
 
 @Component({
@@ -12,7 +12,7 @@ export class ReservationComponent {
   
   formReservation: Reservation = null;
 
-  constructor(private reservationService: reservationService) {
+  constructor(private reservationService: ReservationService) {
   }
 
   list(): Array<Reservation> {
