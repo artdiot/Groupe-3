@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -19,6 +20,9 @@ public class Utilisateur {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(Views.ViewBase.class)
 	private Integer id;
+	@Version
+	@JsonView(Views.ViewBase.class)
+	private int version;
 	@Column(name = "login", length = 100, nullable = false, unique = true)
 	@JsonView(Views.ViewBase.class)
 	private String identifiant;
