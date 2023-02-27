@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import croisiere.model.Utilisateur;
 import croisiere.model.Views;
+import croisiere.repository.ClientRepository;
 import croisiere.repository.UtilisateurRepository;
 import croisiere.rest.dto.AuthDTO;
 
@@ -29,6 +30,8 @@ import croisiere.rest.dto.AuthDTO;
 public class UtilisateurRestController {
 	@Autowired
 	private UtilisateurRepository utilisateurRepository;
+	@Autowired
+	private ClientRepository clientRepository;
 
 	@GetMapping("")
 	@JsonView(Views.ViewUtilisateur.class)
@@ -56,6 +59,17 @@ public class UtilisateurRestController {
 		utilisateur = utilisateurRepository.save(utilisateur);
 
 		return utilisateur; 
+	}
+	
+	@PostMapping("/inscription/client/{id}")
+	@JsonView(Views.ViewUtilisateur.class)
+	public Utilisateur inscription(@RequestBody Utilisateur utilisateur, @PathVariable Integer id) {
+		if(clientRepository.findById(id).isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		utilisateur.setCompte(clientRepository.findById(id).get());
+		
+		return utilisateurRepository.save(utilisateur);
 	}
 
 	@PutMapping("/{id}")

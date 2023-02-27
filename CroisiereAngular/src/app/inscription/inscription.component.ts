@@ -40,6 +40,19 @@ export class InscriptionComponent {
       });
     }
   
+/*     save(): void {
+      if(this.formClient.id) { // UPDATE
+        this.clientService.update(this.formClient);
+      } else { // CREATE
+       
+        this.clientService.create(this.formClient, this.formUtil.identifiant, this.formUtil.motDePasse);
+        this.router.navigate(['/']);
+       
+               
+      }
+      this.cancel();
+    } */
+
     save(): void {
       if(this.formClient.id) { // UPDATE
         this.clientService.update(this.formClient);
