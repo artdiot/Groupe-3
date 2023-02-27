@@ -43,7 +43,7 @@ public class Utilisateur {
 
 	@OneToOne
 	@JoinColumn(name="account_id")
-	@JsonView(Views.ViewBase.class)
+	@JsonView(Views.ViewUtilisateur.class)
 	private Compte compte;
 
 	public Utilisateur() {
