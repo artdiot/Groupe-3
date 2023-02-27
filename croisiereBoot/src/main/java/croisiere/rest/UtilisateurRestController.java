@@ -59,7 +59,7 @@ public class UtilisateurRestController {
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewUtilisateur.class)
+	@JsonView(Views.ViewUtilisateur.class) 
 	public Utilisateur update(@RequestBody Utilisateur utilisateur, @PathVariable Integer id) {
 		if (id != utilisateur.getId()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);

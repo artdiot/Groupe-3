@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { Adresse, Client, Utilisateur } from '../model';
 import { ClientService } from '../service/client.service';
 import { UtilisateurService } from '../service/utilisateur.service';
@@ -16,7 +17,7 @@ export class InscriptionComponent {
   
   
   
-    constructor(private clientService: ClientService, private utilisateurService: UtilisateurService) {
+    constructor(private clientService: ClientService, private utilisateurService: UtilisateurService, private router :Router) {
       this.formClient.adresse=new Adresse();
       this.validate=false;
 
@@ -44,30 +45,33 @@ export class InscriptionComponent {
         this.clientService.update(this.formClient);
       } else { // CREATE
        
-        this.clientService.create(this.formClient);
-        this.validate=true;
-        this.addformUtil();
+        this.clientService.create(this.formClient, this.formUtil.identifiant, this.formUtil.motDePasse);
+        this.router.navigate(['/']);
        
+               
       }
       this.cancel();
     }
     
-    addformUtil(){
-      
+    suivant(){
+      console.log(this.formClient.nom);
       this.clientService.findByNom(this.formClient.nom).subscribe(resp=>{
         
         this.formUtil.nom=resp.nom;
         this.formUtil.prenom=resp.prenom;
-        this.formUtil.role="Client";
-        this.formUtil.compte=resp});
+        this.formUtil.role="CLIENT";
+        this.formUtil.compte= resp
+        
+        });
       
     }
     saveUtilisateur(){
       if(this.formUtil.id) { // UPDATE
         this.utilisateurService.update(this.formUtil);
       } else { // CREATE
-        
         this.utilisateurService.create(this.formUtil);
+
+        
                 
       }
       this.cancel();
