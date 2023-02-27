@@ -21,9 +21,12 @@ public class Views {
 		
 	}
 	
-	public class ViewClient extends ViewBase{
+	public class ViewCompte extends ViewBase{
 	}
-	public class ViewAdmin extends ViewBase{
+	
+	public class ViewClient extends ViewCompte{
+	}
+	public class ViewAdmin extends ViewCompte{
 		
 	}
 	public class ViewPlanete extends ViewBase{
@@ -39,6 +42,7 @@ public class Views {
 	public class ViewUtilisateur extends ViewBase{
 		
 	}
+	
 	
 }
 
