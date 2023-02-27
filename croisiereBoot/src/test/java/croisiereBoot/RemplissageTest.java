@@ -94,17 +94,10 @@ class RemplissageTest {
 		clientRepo.save(c2);
 		Adresse a3 = new Adresse("LA planète","district de ouf","Superville","10 rue trop cool");
 		Admin ad1 = new Admin("ISTRATEUR","Admin","ad.mini.stra@teur",a3);
+		Utilisateur u1 = new Utilisateur("Arthur", "Diot", "Arthur", "Diot",Role.ADMIN,ad1);
 		adminRepo.save(ad1);
-		
-		Utilisateur u1 = new Utilisateur("Arthur", "Diot", "Arthur", "Diot",Role.ADMIN);
-		u1.setCompte(ad1);
 		utilisateurRepo.save(u1);
-		Utilisateur u2 = new Utilisateur("florian","123456","RIAN","Flo",Role.CLIENT);
-		u2.setCompte(c2);
+		Utilisateur u2 = new Utilisateur("florian","123456","RIAN","Flo",Role.CLIENT,c2);
 		utilisateurRepo.save(u2);
-
-		
-		
-		
 	}
 }

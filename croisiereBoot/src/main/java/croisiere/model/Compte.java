@@ -41,8 +41,8 @@ public abstract class Compte {
 	@Embedded
 	@JsonView(Views.ViewBase.class)
 	private Adresse adresse;
-	@OneToOne
-	@JoinColumn(name = "user_id")
+	@OneToOne(mappedBy = "compte")
+	@JsonView(Views.ViewBase.class)
 	private Utilisateur utilisateur;
 	
 	
