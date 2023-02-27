@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Reservation } from '../model';
-import { reservationService } from '../service/reservation.service';
+import { ReservationService } from '../service/reservation.service';
+import { Client } from '../model';
+import { ClientService } from '../service/client.service';
 
 @Component({
   selector: 'app-accueil-client',
@@ -12,11 +14,12 @@ export class AccueilClientComponent {
 
   formReservation: Reservation = null;
   id:number;
+  client:Client=new Client();
 
-  constructor(private reservationService: reservationService, private route: ActivatedRoute) {
+  constructor(private reservationService: ReservationService,private clientService: ClientService, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.id=params["id"];
-      console.log(this.id);
+      clientService.findById(this.id).subscribe(client => {this.client = client;})
       });
   }
 

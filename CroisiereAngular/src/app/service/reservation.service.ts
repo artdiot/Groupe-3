@@ -6,7 +6,7 @@ import { Reservation } from '../model';
 @Injectable({
   providedIn: 'root'
 })
-export class reservationService {
+export class ReservationService {
   
   reservations: Array<Reservation> = new Array<Reservation>();
 

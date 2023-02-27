@@ -1,1 +1,13 @@
-<p>accueil-client</p>
+<h2>Bonjour {{client.nom}} {{client.prenom}} ! </h2>
+
+<a [routerLink]="['/reservation']" [routerLinkActive]="'active'" class="btn btn-primary">Liste des réservations</a>
+<br><br>
+<div class="card" style="width: 18rem;">
+<div class="card-body">
+  <h5 class="card-title">Information voyage</h5>
+  <p class="card-text">Prix : 200€</p>
+  <p class="card-text">Terre-Neptune-Debza2-Wano</p>
+  <p class="card-text">Du 3 mai au 3 septembre</p>
+  <a [routerLink]="['/reservation']" [routerLinkActive]="'active'" class="btn btn-primary">Reserver</a>
+</div>
+
