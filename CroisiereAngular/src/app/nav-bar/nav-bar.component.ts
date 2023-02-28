@@ -9,12 +9,11 @@ import { AuthService } from '../service/auth.service';
 })
 export class NavBarComponent {
 
- 
+  authService:AuthService;
 
   constructor(authService: AuthService){
-    
- 
-     
+    this.authService=authService;
   }
+
 
 }

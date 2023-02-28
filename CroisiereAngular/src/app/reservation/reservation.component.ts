@@ -27,12 +27,6 @@ export class ReservationComponent {
       });
     }
 
-
-  
-  list(): Array<Reservation> {
-    return this.reservationService.findAll();
-  }
-
   etapes(){
     return this.voyage.etapes;
   }

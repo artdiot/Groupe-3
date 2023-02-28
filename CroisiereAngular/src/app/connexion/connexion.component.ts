@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Admin, Client } from '../model';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -12,7 +13,14 @@ export class ConnexionComponent {
   password: string;
 
   constructor(private authService: AuthService, private router: Router) {
-
+    if(authService.connected){
+      if(authService.connected instanceof Client){
+      router.navigate(['/accueilclient']);
+      }
+      if(authService.connected instanceof Admin){
+        router.navigate(['/accueiladmin]']);
+      }
+    }
   }
 
   connect(): void {

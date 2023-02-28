@@ -11,10 +11,7 @@ import { PassagerService } from '../service/passager.service';
 })
 export class AccueilComponent {
 
-  constructor(private servicePassager: PassagerService) {
+  constructor() {
   }
 
-  list(): Array<Passager> {
-    return this.servicePassager.findAll();
-  }
 }

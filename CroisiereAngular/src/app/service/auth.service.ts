@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Utilisateur } from '../model';
+import { Client, Utilisateur } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +37,15 @@ export class AuthService {
 
   checkUser(): Utilisateur {
     return this.connected;
+  }
+
+  isClient(): boolean{
+    console.log(this.connected);
+    if(this.connected){
+      return(this.connected.role=="CLIENT");
+    }
+    else{
+      return false;
+    }
   }
 }
