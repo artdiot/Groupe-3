@@ -18,8 +18,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import croisiere.model.Client;
+import croisiere.model.Passager;
 import croisiere.model.Reservation;
 import croisiere.model.Views;
+import croisiere.repository.ClientRepository;
+import croisiere.repository.PassagerRepository;
 import croisiere.repository.ReservationRepository;
 
 @RestController
@@ -28,6 +32,10 @@ import croisiere.repository.ReservationRepository;
 public class ReservationRestController {
 	@Autowired
 	private ReservationRepository reservationRepository;
+	@Autowired
+	private ClientRepository clientRepo;
+	@Autowired
+	private PassagerRepository passagerRepo;
 
 
 	@GetMapping("")
@@ -59,7 +67,22 @@ public class ReservationRestController {
 
 		return reservation;
 	}
+	
+	@PostMapping("/form/")
+	@JsonView(Views.ViewReservation.class)
+	public Reservation createForm(@RequestBody Reservation reservation) {
+		reservation = reservationRepository.save(reservation);
 
+		Client client = clientRepo.save(reservation.getClient());
+		Passager passager = reservation.getPassagers().get(0);
+		passager.setReservation(reservation);
+		passager = passagerRepo.save(passager);
+		
+		reservation = reservationRepository.save(reservation);
+		return reservation;
+	}
+	
+	
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewReservation.class)
 	public Reservation update(@RequestBody Reservation reservation, @PathVariable Integer id) {
@@ -80,5 +103,6 @@ public class ReservationRestController {
 	public void delete(@PathVariable Integer id) {
 		reservationRepository.deleteById(id);
 	}
+	
 
 }

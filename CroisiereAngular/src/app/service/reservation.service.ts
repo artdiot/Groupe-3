@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Reservation } from '../model';
+import { Passager, Reservation } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,12 @@ export class ReservationService {
       this.load();
     });
   }
+
+  createForm(reservation: Reservation) : void{
+    this.http.post<Reservation>("http://localhost:8888/reservation/form/", reservation).subscribe(resp => {
+      this.load();
+  });
+}
 
   update(reservation: Reservation): void {
     this.http.put<Reservation>("http://localhost:8888/reservation/" + reservation.id, reservation).subscribe(resp => {

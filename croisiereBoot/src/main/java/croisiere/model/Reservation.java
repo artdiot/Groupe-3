@@ -39,15 +39,15 @@ public class Reservation {
 	@JsonView(Views.ViewBase.class)
 	private int classe;
 	@OneToMany(mappedBy ="reservation")
-	@JsonView(Views.ViewReservation.class)
+	@JsonView(Views.ViewBase.class)
 	private List<Passager> passagers = new ArrayList<>();
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id")
-	@JsonView(Views.ViewReservationInfo.class)
+	@JsonView(Views.ViewReservation.class)
 	private Client client;
 	@ManyToOne
 	@JoinColumn(name = "travel_id")
-	@JsonView(Views.ViewReservationInfo.class)
+	@JsonView(Views.ViewReservation.class)
 	private Voyage voyage;
 	
 	public Reservation() {

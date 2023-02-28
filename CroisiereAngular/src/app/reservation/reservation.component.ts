@@ -6,40 +6,27 @@ import { PassagerService } from '../service/passager.service';
 import { ReservationService } from '../service/reservation.service';
 import { VoyageService} from '../service/voyage.service';
 
-
-=======
-import { Passager, Reservation, Voyage } from '../model';
-import { ReservationService } from '../service/reservation.service';
-import { PassagerService } from '../service/passager.service';
-import { VoyageService } from '../service/voyage.service';
-import { Router } from '@angular/router';
->>>>>>> rafiq
 @Component({
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.scss']
 })
 export class ReservationComponent {
-<<<<<<< HEAD
+
   
   formReservation: Reservation = new Reservation();
   voyage : Voyage = null;
+  formVoyage : Voyage;
   formPassager: Passager = new Passager();
 
-  constructor(private reservationService: ReservationService, private voyageService : VoyageService, private authService: AuthService, private router : Router, private passagerService: PassagerService) {
+  constructor(private reservationService: ReservationService, private voyageService : VoyageService, private authService: AuthService, private router : Router, 
+    private passagerService: PassagerService) {
     voyageService.findById(1).subscribe(resp=>{
       this.voyage=resp;
       console.log("prix " + resp.prix );
       });
-=======
-  formReservation: Reservation = new Reservation();
-  formPassager:Passager = new Passager();
-  formVoyage:Voyage = new Voyage();
+    }
 
-  constructor(private reservationService: ReservationService,private passagerService: PassagerService,
-    private voyageService: VoyageService, private router :Router) {
->>>>>>> rafiq
-  }
 
   
   list(): Array<Reservation> {
@@ -63,15 +50,30 @@ export class ReservationComponent {
     });
   }
 
-  save(): void {
+/*   save(): void {
     if(this.formReservation.id) { // UPDATE
       this.reservationService.update(this.formReservation);
     } else { // CREATE
       this.formReservation.voyage=this.voyage;
       this.passagerService.create(this.formPassager);
       this.formPassager.reservation=this.formReservation;
+      this.passagerService.update(this.formPassager);
       this.formReservation.client = this.authService.connected.compte as Client; 
       this.reservationService.create(this.formReservation);
+      this.router.navigate(['/accueilclient',{id:this.authService.connected.compte.id}]);
+    }
+    this.cancel();
+  } */
+
+  save(): void {
+    if(this.formReservation.id) { // UPDATE
+      this.reservationService.update(this.formReservation);
+    } else { // CREATE
+      this.formReservation.voyage=this.voyage;
+      this.formReservation.passagers=new Array<Passager>();
+      this.formReservation.passagers.push(this.formPassager);
+      this.formReservation.client = this.authService.connected.compte as Client; 
+      this.reservationService.createForm(this.formReservation);
       this.router.navigate(['/accueilclient',{id:this.authService.connected.compte.id}]);
     }
     this.cancel();

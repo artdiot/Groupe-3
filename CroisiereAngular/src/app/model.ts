@@ -25,7 +25,7 @@ export class Reservation{
     prix : number;
     date: string;
     classe: number;
-    passagers:Array<Passager>=new Array<Passager>;
+    passagers:Array<Passager>=new Array<Passager>();
     client: Client;
     voyage: Voyage;
 
