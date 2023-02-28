@@ -4,6 +4,7 @@ import { Reservation } from '../model';
 import { ReservationService } from '../service/reservation.service';
 import { Client } from '../model';
 import { ClientService } from '../service/client.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-accueil-client',
@@ -14,14 +15,10 @@ export class AccueilClientComponent {
 
   
   formReservation: Reservation = null;
-  id:number;
   client:Client=new Client();
 
-  constructor(private reservationService: ReservationService,private clientService: ClientService, private route: ActivatedRoute) {
-    this.route.params.subscribe(params => {
-      this.id=params["id"];
-      clientService.findById(this.id).subscribe(client => {this.client = client;})
-      });
+  constructor(private reservationService: ReservationService,private clientService: ClientService, private authService: AuthService) {
+    this.client=this.authService.connected.compte as Client;
   }
 
   listReservation(): Array<Reservation> {

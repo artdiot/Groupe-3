@@ -17,7 +17,6 @@ export class AuthService {
       password: password
     }).subscribe((resp: any) => {
       this.connected = resp;
-      console.log(this.connected.compte);
       if (this.connected) {
         if (this.connected.role == "CLIENT") {
           console.log(this.connected.compte.id);
@@ -40,7 +39,6 @@ export class AuthService {
   }
 
   isClient(): boolean{
-    console.log(this.connected);
     if(this.connected){
       return(this.connected.role=="CLIENT");
     }
