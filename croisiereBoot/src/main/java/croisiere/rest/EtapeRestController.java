@@ -33,7 +33,7 @@ public class EtapeRestController {
 	@GetMapping("")
 	@JsonView(Views.ViewEtape.class)
 	public List<Etape> findAll() {
-		List<Etape> etapes = etapeRepository.findAll();
+		List<Etape> etapes = etapeRepository.findAllByOrderByDepartAsc();
 
 		return etapes;
 	}

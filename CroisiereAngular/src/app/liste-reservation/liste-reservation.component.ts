@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Reservation } from '../model';
+import { Client, Reservation } from '../model';
+import { AuthService } from '../service/auth.service';
+import { EtapeService } from '../service/Etape.service';
 import { ReservationService } from '../service/reservation.service';
 
 @Component({
@@ -7,23 +9,32 @@ import { ReservationService } from '../service/reservation.service';
   templateUrl: './liste-reservation.component.html',
   styleUrls: ['./liste-reservation.component.scss']
 })
-export class ListeReservationComponent {
-  constructor(private reservationService: ReservationService){
 
+export class ListeReservationComponent {
+
+  client: Client= new Client();
+  etapeService : EtapeService;
+
+  constructor(private reservationService: ReservationService, private authService: AuthService, etapeService : EtapeService){
+    this.client=this.authService.connected.compte as Client;
   }
 
   listUpcoming(): Array<Reservation> {
-    return this.reservationService.findAll().filter(res => {
-      let dateRes: Date = new Date(res.date);
-      let date = new Date(2023,2,27);
-      dateRes>=date});
+    let date = new Date(2023,2,28);
+    console.log(this.reservationService.findAllByClient(this.client.id));
+    return this.reservationService.findAllByClient(this.client.id).filter(res => {
+        console.log(res);
+        let dateRes: Date = new Date(res.date);
+         return dateRes >= date;
+      });
   }
 
   listPast(): Array<Reservation> {
-    return this.reservationService.findAll().filter(res => {
+    let date = new Date(2023,2,27);
+    return this.reservationService.findAllByClient(this.client.id).filter(res => {
       let dateRes: Date = new Date(res.date);
-      let date = new Date(2023,2,27);
-      dateRes<date});
+       return dateRes<date;
+      });
   }
 
   edit(id: number): void{}

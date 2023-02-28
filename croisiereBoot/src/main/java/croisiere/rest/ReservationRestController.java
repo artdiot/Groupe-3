@@ -57,7 +57,15 @@ public class ReservationRestController {
 
 		return optReservation.get();
 	}
-
+	
+//	@GetMapping("/client/{id}")
+//	@JsonView(Views.ViewReservation.class)
+//	public List<Reservation> findAllByClient(@PathVariable Integer id) {
+//		List<Reservation> reservations = reservationRepository.findAllByClient();
+//		
+//		
+//		return reservations;
+//	}
 
 
 	@PostMapping("")

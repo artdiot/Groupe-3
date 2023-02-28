@@ -5,12 +5,15 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
+
+import org.hibernate.annotations.Fetch;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -37,7 +40,7 @@ public class Voyage {
 	@JsonView(Views.ViewBase.class)
 	private int capacite;
 
-	@OneToMany(mappedBy = "voyage")
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "voyage")
 	@JsonView(Views.ViewVoyage.class)
 	private List<Etape> etapes = new ArrayList<>();
 	@OneToMany(mappedBy = "voyage")

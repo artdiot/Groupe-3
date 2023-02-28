@@ -24,6 +24,10 @@ export class EtapeService {
     return this.http.get<Etape>("http://localhost:8888/etape/" + id);
   }
 
+  findByVoyage(id:number): Array<Etape>{
+    return this.findAll().filter(etape => { return etape.voyage.id == id});
+  }
+
   create(etape: Etape): void {
     this.http.post<Etape>("http://localhost:8888/Etape", etape).subscribe(resp => {
       this.load();

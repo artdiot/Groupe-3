@@ -16,8 +16,8 @@
             <tbody>
                 <tr *ngFor="let reservation of listUpcoming()">
                     <td>{{reservation.date}}</td>
-                    <td>{{reservation.voyage.etapes[0].planeteDepart.nom}}</td>
-                    <td>{{reservation.voyage.etapes.at(-1).planeteArrivee.nom}}</td>
+                    <td>{{"test"}}</td>
+                    <td>{{"test"}}</td>
                     <td>{{reservation.passagers.length}}</td>
                     <td>{{reservation.prix}}</td>
                     <td>
@@ -50,8 +50,8 @@
             <tbody>
                 <tr *ngFor="let reservation of listPast()">
                     <td>{{reservation.date}}</td>
-                    <td>{{reservation.voyage.etapes[0].planeteDepart.nom}}</td>
-                    <td>{{reservation.voyage.etapes.at(-1).planeteArrivee.nom}}</td>
+                    <td>{{"test"}}</td>
+                    <td>{{"test"}}</td>
                     <td>{{reservation.passagers.length}}</td>
                     <td>{{reservation.prix}}</td>
                     <td>

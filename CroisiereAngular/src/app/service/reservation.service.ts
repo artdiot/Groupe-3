@@ -18,6 +18,13 @@ export class ReservationService {
     return this.reservations;
   }
 
+/*   findAllWithEtapes(): Array<Reservation>{
+    return this.http.get<Array<Reservation>>("http://localhost:8888/reservation/etapes/");
+  } */
+
+  findAllByClient(id : number): Array<Reservation>{
+        return this.findAll().filter(res => { return res.client.id == id;});
+  }
  
   findById(id: number): Observable<Reservation> {
     return this.http.get<Reservation>("http://localhost:8888/reservation/" + id);
@@ -48,7 +55,7 @@ export class ReservationService {
   }
 
   private load(): void {
-    this.http.get<Array<Reservation>>("http://localhost:8888/reservation").subscribe(resp => {
+    this.http.get<Array<Reservation>>("http://localhost:8888/reservation/").subscribe(resp => {
       this.reservations = resp;
     });
   }

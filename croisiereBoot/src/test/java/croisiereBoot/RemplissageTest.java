@@ -54,7 +54,7 @@ class RemplissageTest {
 	private ReservationRepository reservationRepo;
 	
 	@Test
-	public void RemplissageTest(){
+	public void RemplissageTest(){ // Penser à run en create (remettre en update avant de lancer l'application)
 
 		Planete p1 = new Planete("TPT",4.0,3.0,0.0);
 		planeteRepo.save(p1);
@@ -79,10 +79,10 @@ class RemplissageTest {
 		voyageRepo.save(v1);
 		Voyage v2 = new Voyage(200, 12.8, 7, 12);
 		voyageRepo.save(v2);
-		Etape e3 = new Etape(LocalDate.parse("2023-02-17"), LocalDate.parse("2023-02-19"), p1, p2, v1);
+		Etape e3 = new Etape(LocalDate.parse("2023-04-17"), LocalDate.parse("2023-04-19"), p1, p2, v1);
 		etapeRepo.save(e3);
 
-		Etape e4 = new Etape(LocalDate.parse("2023-02-19"), LocalDate.parse("2023-02-21"), p2, p3, v1);
+		Etape e4 = new Etape(LocalDate.parse("2023-04-19"), LocalDate.parse("2023-04-21"), p2, p3, v1);
 		etapeRepo.save(e4);
 
 		List<Etape> etapes2 = new ArrayList<Etape>();
@@ -108,28 +108,31 @@ class RemplissageTest {
 		
 		Passager pas1 = new Passager("Robert--Ansart","Florian", LocalDate.parse("1993-05-03"));
 		passagerRepo.save(pas1);
-		Passager pas2 = new Passager("Diot","Arthur", LocalDate.parse("1995-05-03"));
+		Passager pas2 = new Passager("Diot","Arthur", LocalDate.parse("1996-05-03"));
 		passagerRepo.save(pas2);
 		Passager pas3 = new Passager("Salem","Rafiq",LocalDate.parse("1995-05-17"));
 		passagerRepo.save(pas3);
 		Reservation r1 = new Reservation(200.00, LocalDate.parse("2023-05-17"), 1);
 		reservationRepo.save(r1);
-		List<Passager> passager1 = new ArrayList<Passager>();
-		passager1.add(pas1);
-		passager1.add(pas2);
-		r1.setPassagers(passager1);
+		List<Passager> passagers1 = new ArrayList<Passager>();
+		passagers1.add(pas1);
+		r1.setPassagers(passagers1);
 		r1.setVoyage(v1);
-		r1.setClient(c1);
+		r1.setClient(c2);
 		reservationRepo.save(r1);
+		pas1.setReservation(r1);
+		passagerRepo.save(pas1);
 		Reservation r2 = new Reservation(300, LocalDate.parse("2023-08-17"), 2);
 		reservationRepo.save(r2);
-		List<Passager> passager2 = new ArrayList<Passager>();
-		passager2.add(pas2);
-		passager2.add(pas3);
-		r2.setPassagers(passager2);
+		List<Passager> passagers2 = new ArrayList<Passager>();
+		passagers2.add(pas2);
+
+		r2.setPassagers(passagers2);
 		r2.setVoyage(v2);
 		r2.setClient(c2);
 		reservationRepo.save(r2);
+		pas2.setReservation(r2);
+		passagerRepo.save(pas2);
 		
 		
 	}
