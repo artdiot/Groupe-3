@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Client, Passager, Reservation, Voyage } from '../model';
 import { AuthService } from '../service/auth.service';
+import { PassagerService } from '../service/passager.service';
 import { ReservationService } from '../service/reservation.service';
-import { voyageService } from '../service/voyage.service';
+import { VoyageService} from '../service/voyage.service';
 
 
 @Component({
@@ -16,9 +18,10 @@ export class ReservationComponent {
   voyage : Voyage = null;
   formPassager: Passager = new Passager();
 
-  constructor(private reservationService: ReservationService, private voyageService : voyageService, private authService: AuthService) {
+  constructor(private reservationService: ReservationService, private voyageService : VoyageService, private authService: AuthService, private router : Router, private passagerService: PassagerService) {
     voyageService.findById(1).subscribe(resp=>{
       this.voyage=resp;
+      console.log("prix " + resp.prix );
       });
   }
 
@@ -44,9 +47,11 @@ export class ReservationComponent {
       this.reservationService.update(this.formReservation);
     } else { // CREATE
       this.formReservation.voyage=this.voyage;
-      this.formReservation.passagers = [this.formPassager];
+      this.passagerService.create(this.formPassager);
+      this.formPassager.reservation=this.formReservation;
       this.formReservation.client = this.authService.connected.compte as Client; 
       this.reservationService.create(this.formReservation);
+      this.router.navigate(['/accueilclient',{id:this.authService.connected.compte.id}]);
     }
     this.cancel();
   }

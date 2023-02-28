@@ -3,15 +3,15 @@
     <div class="row">
       <h3>Coordonnée passager</h3>
         <div class="col">
-            <label for="inputAddress">Nom</label>
+            <label for="nom">Nom</label>
           <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="formPassager.nom" name="nom">
         </div>
         <div class="col">
-            <label for="inputAddress">Prenom</label>
+            <label for="prenom">Prenom</label>
           <input type="text" class="form-control" placeholder="Prenom" [(ngModel)]="formPassager.prenom" name="prenom">
         </div>
         <div class="col">
-          <label for="inputAddress">Date de naissance</label>
+          <label for="dateNaissance">Date de naissance</label>
         <input type="date" class="form-control" placeholder="Date" [(ngModel)]="formPassager.dateNaissance" name="dateNaissance">
       </div>
       </div>
@@ -44,7 +44,7 @@
                 <span><strong>{{voyage.prix}}</strong></span>
               </li>
             </ul>
-            <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="save()">
+            <button class="btn btn-primary btn-lg btn-block" type="button" (click)="save()">
                 Confirmer la reservation
               </button>
           </div>

@@ -53,12 +53,12 @@ public class Etape {
 	}
 	
 	public Etape(LocalDate depart, LocalDate arrivee, Planete planeteDepart,
-			Planete planeteArrive, Voyage voyage) {
+			Planete planeteArrivee, Voyage voyage) {
 		super();
 		this.depart = depart;
 		this.arrivee = arrivee;
 		this.planeteDepart = planeteDepart;
-		this.planeteArrive = planeteArrive;
+		this.planeteArrivee = planeteArrivee;
 		this.voyage = voyage;
 	}
 
@@ -88,11 +88,11 @@ public class Etape {
 	public void setPlanetDepart(Planete planetDepart) {
 		this.planeteDepart = planetDepart;
 	}
-	public Planete getPlanetArrivé() {
-		return planeteArrive;
+	public Planete getPlanetArrivee() {
+		return planeteArrivee;
 	}
-	public void setPlanetArrivé(Planete planetArrivé) {
-		this.planeteArrive = planetArrivé;
+	public void setPlanetArrivee(Planete planetArrivee) {
+		this.planeteArrivee = planetArrivee;
 	}
 
 	
