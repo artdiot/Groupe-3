@@ -48,6 +48,8 @@ public class Etape {
 	@JsonView(Views.ViewEtape.class)
 	private Voyage voyage;
 	
+	private double vitesse = 10;
+	
 	public Etape() {
 		super();
 	}
@@ -61,8 +63,22 @@ public class Etape {
 		this.planeteArrivee = planeteArrivee;
 		this.voyage = voyage;
 	}
+	
+	public Etape( LocalDate depart, Planete planeteDepart, Planete planeteArrivee) {
+		this.depart = depart;
+		this.planeteDepart = planeteDepart;
+		this.planeteArrivee = planeteArrivee;
+		this.arrivee= tempstrajet();
+	}
 
-
+	public LocalDate tempstrajet() {
+		
+		double temps= planeteDepart.calculDistance(planeteArrivee)/vitesse; //calcul temps du voyage
+		
+		arrivee=depart.plusDays(Math.round(temps)); // ajout du temps du voyage
+	
+		return arrivee;
+	}
 
 	public Integer getId() {
 		return id;

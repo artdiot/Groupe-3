@@ -53,10 +53,12 @@ class RemplissageTest {
 
 		Planete p1 = new Planete("TPT",4.0,3.0,0.0);
 		planeteRepo.save(p1);
-		Planete p2 = new Planete("Tatooine",0.0,1.0,3.14);
+		Planete p2 = new Planete("Tatooine",0.0,1.0,15);
 		planeteRepo.save(p2);
 		Planete p3 = new Planete("Namek",15.7,2.3,6.9);
 		planeteRepo.save(p3);
+		Planete p4 = new Planete("Duckland",15.7,2.3,6.9);
+		planeteRepo.save(p4);
 		Voyage v1 = new Voyage(150, 12.7, 2, 4);
 		voyageRepo.save(v1);
 		Etape e1 = new Etape(LocalDate.parse("2023-02-17"), LocalDate.parse("2023-02-19"), p1, p2, v1);

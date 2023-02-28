@@ -33,6 +33,8 @@ public class Planete {
 	@JsonView(Views.ViewBase.class)
 	private double positionZ;
 	
+	
+	
 	public Planete() {
 		super();
 	}	
@@ -45,8 +47,13 @@ public class Planete {
 		this.positionZ = positionZ;
 	}
 
-
-
+	public double calculDistance(Planete planeteA) {
+		
+		double distance = Math.sqrt(Math.pow(this.positionX-planeteA.positionX,2)+Math.pow(this.positionY-planeteA.positionY,2)+Math.pow(this.positionZ-planeteA.positionZ,2));
+		
+		return distance;
+	}
+	
 
 	public Integer getId() {
 		return id;
@@ -78,8 +85,10 @@ public class Planete {
 	public void setPositionZ(double positionZ) {
 		this.positionZ = positionZ;
 	}
-
 	
+
+
+
 	
 		
 	

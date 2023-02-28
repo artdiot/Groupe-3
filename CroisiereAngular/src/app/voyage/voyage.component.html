@@ -1,0 +1,108 @@
+<div class="card mt-3" *ngIf="formEtape">
+    <div class="card-header bg-primary text-white display-6">Edition des Etapes</div>
+    <div class="card-body">
+        
+
+        <div class="form-group">
+            <label for="version">Date de depart</label> <input type="date" class="form-control" id="dateDepart" name="dateDepart" [(ngModel)]="formEtape.depart"  />
+        </div>
+       
+        <div>
+            <label for="planete">Selection de la planete de Départ</label>
+            <select class="form-control" id="planeteD" name="planeteD" [(ngModel)]="formEtape.planeteDepart">
+                <option value="">Veuillez sélectionner une planete</option>
+                <option *ngFor="let planete of listPlanete()" [ngValue]="planete">{{planete.nom}} </option>
+            </select>
+        </div>
+
+        <div>
+            <label for="planete">Selection de la planete d'Arrivee</label>
+            
+            <select class="form-control" id="planeteA" name="planeteA" [(ngModel)] ="formEtape.planeteArrivee">
+                <option value="">Veuillez sélectionner une planete</option>
+                <option *ngFor="let planete of listPlanete()" [ngValue]="planete" >{{planete.nom}} </option>
+            </select>
+        </div>
+        
+        <div class="card-footer">
+            <div class="btn-group btn-group-lg float-right">
+                <a class="btn btn-outline-primary" (click)="addEtape()"><i class="bi bi-check-square-fill"></i></a>
+    
+            </div>
+        </div>
+
+
+    <div class="card-footer">
+        <div class="btn-group btn-group-lg float-right">
+            <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill"></i></a>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="card mt-3" *ngIf="!formEtape">
+    <div class="card-header bg-primary text-white display-6">Voulez vous ajouter une autre étape</div>
+    <div class="card-body">
+        
+        <div class="btn-group btn-group-lg float-right">
+            <a class="btn btn-success" (click)="yes()"><i class="bi bi-check-square-fill"></i></a>
+
+        </div>
+         <div class="btn-group btn-group-lg float-right">
+            <a class="btn btn-success" (click)="no()"><i class="bi bi-check-square-fill"></i></a>
+
+        </div>
+
+</div>
+</div>
+
+<div class="card mt-3" *ngIf="formVoyage">
+    <div class="card-header bg-primary text-white display-6">Edition d'un Voyage</div>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formVoyage.id" readonly/>
+        </div>
+        <div class="form-group">
+            <label for="version">Version:</label> <input type="number" class="form-control" id="version" name="version" [(ngModel)]="formVoyage.version" readonly />
+        </div>
+
+        <div class="form-group">
+            <label for="version">Capacite:</label> <input type="number" class="form-control" id="capacite" name="capacite" [(ngModel)]="formVoyage.capacite"  />
+        </div>
+
+        <div class="form-group">
+            <label for="version">Date de depart</label> <input type="date" class="form-control" id="dateDepart" name="dateDepart" [(ngModel)]="formEtape.depart"  />
+        </div>
+       
+        <div>
+            <label for="planete">Selection de la planete de Départ</label>
+            <select class="form-control" id="planeteD" name="planeteD" [(ngModel)]="formEtape.planeteDepart">
+                <option value="">Veuillez sélectionner une planete</option>
+                <option *ngFor="let planete of listPlanete()" >{{planete.nom}} </option>
+            </select>
+        </div>
+
+        <div>
+            <label for="planete">Selection de la planete d'Arrivee</label>
+            <select class="form-control" id="planeteA" name="planeteA" [(ngModel)]="formEtape.planeteArrivee">
+                <option value="">Veuillez sélectionner une planete</option>
+                <option *ngFor="let planete of listPlanete()" >{{planete.nom}} </option>
+            </select>
+        </div>
+        
+        <div class="card-footer">
+            <div class="btn-group btn-group-lg float-right">
+                <a class="btn btn-outline-primary"><i class="bi bi-check-square-fill"></i></a>
+    
+            </div>
+        </div>
+
+    <div class="card-footer">
+        <div class="btn-group btn-group-lg float-right">
+            <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill"></i></a>
+
+        </div>
+    </div>
+</div>
+</div>
