@@ -4,15 +4,15 @@
       <h3>Coordonnée passager</h3>
         <div class="col">
             <label for="inputAddress">Nom</label>
-          <input type="text" class="form-control" placeholder="Nom">
+          <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="formPassager.nom">
         </div>
         <div class="col">
             <label for="inputAddress">Prenom</label>
-          <input type="text" class="form-control" placeholder="Prenom">
+          <input type="text" class="form-control" placeholder="Prenom" [(ngModel)]="formPassager.prenom">
         </div>
         <div class="col">
           <label for="inputAddress">Date de naissance</label>
-        <input type="date" class="form-control" placeholder="Date">
+        <input type="date" class="form-control" placeholder="Date" [(ngModel)]="formPassager.dateNaissance">
       </div>
       </div>
       
@@ -45,7 +45,8 @@
                 <span><strong>200€</strong></span>
               </li>
             </ul>
-            <button class="btn btn-primary btn-lg btn-block" type="submit">
+            
+            <button (click)="add()" class="btn btn-primary btn-lg btn-block" type="submit">
                 Confimer la reservation
               </button>
           </div>

@@ -54,17 +54,11 @@ public class Reservation {
 		super();
 	}
 	
-	
-
 	public Reservation( double prix, LocalDate date, int classe) {
-		
 		this.prix = prix;
 		this.date = date;
 		this.classe = classe;
-
 	}
-
-
 
 	public Integer getId() {
 		return id;
