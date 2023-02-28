@@ -1,16 +1,25 @@
 import { Component } from '@angular/core';
+<<<<<<< HEAD
 import { Client, Passager, Reservation, Voyage } from '../model';
 import { AuthService } from '../service/auth.service';
 import { ReservationService } from '../service/reservation.service';
 import { voyageService } from '../service/voyage.service';
 
 
+=======
+import { Passager, Reservation, Voyage } from '../model';
+import { ReservationService } from '../service/reservation.service';
+import { PassagerService } from '../service/passager.service';
+import { VoyageService } from '../service/voyage.service';
+import { Router } from '@angular/router';
+>>>>>>> rafiq
 @Component({
-  selector: 'app-ordinateur',
+  selector: 'app-reservation',
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.scss']
 })
 export class ReservationComponent {
+<<<<<<< HEAD
   
   formReservation: Reservation = new Reservation();
   voyage : Voyage = null;
@@ -20,8 +29,17 @@ export class ReservationComponent {
     voyageService.findById(1).subscribe(resp=>{
       this.voyage=resp;
       });
+=======
+  formReservation: Reservation = new Reservation();
+  formPassager:Passager = new Passager();
+  formVoyage:Voyage = new Voyage();
+
+  constructor(private reservationService: ReservationService,private passagerService: PassagerService,
+    private voyageService: VoyageService, private router :Router) {
+>>>>>>> rafiq
   }
 
+  
   list(): Array<Reservation> {
     return this.reservationService.findAll();
   }
@@ -30,7 +48,11 @@ export class ReservationComponent {
     return this.voyage.etapes;
   }
   add(): void {
+
+    this.formVoyage = new Voyage(200,123);
     this.formReservation = new Reservation();
+    this.formReservation.voyage=this.formVoyage;
+    this.formReservation.passagers.push(this.formPassager);
   }
 
   edit(id: number): void {
