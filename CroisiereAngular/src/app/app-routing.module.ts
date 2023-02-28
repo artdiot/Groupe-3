@@ -7,6 +7,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ListeReservationComponent } from './liste-reservation/liste-reservation.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { VoyageComponent } from './voyage/voyage.component';
 
 const routes: Routes = [
   {path: "", component: AccueilComponent, pathMatch: 'full'},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: "connexion", component: ConnexionComponent},
   {path: "reservation", component: ReservationComponent},
   {path: "inscription", component: InscriptionComponent},
-  {path:"listeReservation", component:ListeReservationComponent}
+  {path:"listeReservation", component:ListeReservationComponent},
+  {path: "voyage", component:VoyageComponent}
 ];
 
 @NgModule({

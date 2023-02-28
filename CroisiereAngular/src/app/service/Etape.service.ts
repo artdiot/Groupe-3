@@ -9,6 +9,7 @@ import { Etape } from '../model';
 export class EtapeService {
   
   etapes: Array<Etape> = new Array<Etape>();
+  etapeResp= new Etape();
 
   constructor(private http: HttpClient) {
     this.load();
@@ -29,9 +30,13 @@ export class EtapeService {
   }
 
   create(etape: Etape): void {
-    this.http.post<Etape>("http://localhost:8888/Etape", etape).subscribe(resp => {
-      this.load();
+    
+    this.http.post<Etape>("http://localhost:8888/etape", etape).subscribe(resp => {
+      
+      this.etapeResp=resp;
+     
     });
+   
   }
 
   update(etape: Etape): void {

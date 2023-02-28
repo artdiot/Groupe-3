@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Etape, Planete, Voyage } from '../model';
 import { EtapeService } from '../service/Etape.service';
 import { PlaneteService } from '../service/planete.service';
+import { VoyageService } from '../service/voyage.service';
 
 @Component({
   selector: 'app-accueil-admin',
@@ -12,27 +13,18 @@ import { PlaneteService } from '../service/planete.service';
 export class AccueilAdminComponent {
 
   id:number;
-  planete: Planete;
-  formVoyage: Voyage = new Voyage();
-  planeteD:Planete;
-  etape:Etape;
+  
   
 
-  constructor(private route: ActivatedRoute, private planeteService: PlaneteService, private etapeService: EtapeService){
+  constructor(private route: ActivatedRoute, private planeteService: PlaneteService, private etapeService: EtapeService, private voyageService: VoyageService){
     this.route.params.subscribe(params => {
       this.id=params["id"];
       console.log(this.id);
       });
   }
 
-  save(){}
 
-  listPlanete():Array<Planete>{
-    return this.planeteService.findAll();
-  }
 
-  listEtape():Array<Etape>{
-    return this.etapeService.findAll();
-  }
+ 
 
 }

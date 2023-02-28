@@ -55,9 +55,11 @@ public class EtapeRestController {
 	@PostMapping("")
 	@JsonView(Views.ViewEtape.class)
 	public Etape create(@RequestBody Etape etape) {
-		etape = etapeRepository.save(etape);
+		
+		Etape etapeNew = new Etape(etape.getDepart(),etape.getPlanetDepart(),etape.getPlanetArrivee());
+		etapeNew = etapeRepository.save(etapeNew);
 
-		return etape;
+		return etapeNew;
 	}
 
 	@PutMapping("/{id}")

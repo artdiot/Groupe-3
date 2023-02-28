@@ -1,5 +1,7 @@
 package croisiere.model;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,9 +66,62 @@ public class Voyage {
 		this.distance = distance;
 		this.duree = duree;
 		this.capacite = capacite;
+		
+	}
+	
+	public Voyage (int capacite, List<Etape> etapes) {
+		this.capacite = capacite;
 		this.etapes = etapes;
 	}
-
+	
+	public Voyage(double prix, double distance, int duree, int capacite, List<Etape> etapes) {
+		super();
+		this.prix = prix;
+		this.distance = distance;
+		this.duree = duree;
+		this.capacite = capacite;
+		this.etapes = etapes;
+	}
+	
+	public void calculDistance() {
+	
+		distance = 0; 
+		
+		for(Etape etape: etapes) {
+			 distance = distance + etape.getPlanetDepart().calculDistance(etape.getPlanetArrivee());
+			 System.out.println("Apres l'Etape, la distance est maintenant de "+ distance);
+		}
+		
+		 System.out.println("La distance du Voyage, la distance est maintenant de "+ distance);
+	}
+	
+	public void calculTemps() {
+		
+		
+		LocalDate depart = etapes.get(0).getDepart();
+		LocalDate arrivee = etapes.get(0).getArrivee();
+		
+		for(Etape etape: etapes) {
+			
+			if (etape.getDepart().isBefore(depart)) {
+			depart = etape.getDepart();
+			}
+			
+			if (etape.getArrivee().isAfter(arrivee)) {
+			arrivee = etape.getArrivee();
+			}
+	}
+		System.out.println("La date de départ est le : "+depart);
+		System.out.println("La date de fin est le : "+arrivee);
+		duree = (int) (ChronoUnit.DAYS.between(depart, arrivee)+1);
+		System.out.println("Le temps du trajet est de " + duree +" jours");
+	}
+	
+	public void calculPrix() {
+		prix = duree * 20;
+		System.out.println("le prix est de " + prix + " dollars spaciaux");
+	}
+	
 	public Integer getId() {
 		return id;
 	}
