@@ -9,6 +9,7 @@ import { Planete } from '../model';
 export class PlaneteService {
   
   planetes: Array<Planete> = new Array<Planete>();
+ 
 
   constructor(private http: HttpClient) {
     this.load();
@@ -18,9 +19,7 @@ export class PlaneteService {
     return this.planetes;
   }
 
-  findAllOrphans(id?: number): Observable<Array<Planete>> {
-    return this.http.get<Array<Planete>>("http://localhost:8888/planete/orphans/"+(id?id:""));
-  }
+  
 
   findById(id: number): Observable<Planete> {
     return this.http.get<Planete>("http://localhost:8888/planete/" + id);
