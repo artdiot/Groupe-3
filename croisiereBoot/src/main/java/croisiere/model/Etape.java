@@ -40,7 +40,7 @@ public class Etape {
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "planet_arrival_id")
-	@JsonView(Views.ViewBase.class)
+	@JsonView(Views.ViewEtape.class)
 	private Planete planeteArrivee;
 	
 	@ManyToOne

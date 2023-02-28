@@ -1,5 +1,6 @@
 package croisiereBoot;
 
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +13,10 @@ import croisiere.CroisiereBootApplication;
 import croisiere.model.Admin;
 import croisiere.model.Adresse;
 import croisiere.model.Client;
-import croisiere.model.Compte;
 import croisiere.model.Etape;
+import croisiere.model.Passager;
 import croisiere.model.Planete;
+import croisiere.model.Reservation;
 import croisiere.model.Role;
 import croisiere.model.Utilisateur;
 import croisiere.model.Voyage;
@@ -22,6 +24,7 @@ import croisiere.repository.AdminRepository;
 import croisiere.repository.AvisRepository;
 import croisiere.repository.ClientRepository;
 import croisiere.repository.EtapeRepository;
+import croisiere.repository.PassagerRepository;
 import croisiere.repository.PlaneteRepository;
 import croisiere.repository.ReservationRepository;
 import croisiere.repository.UtilisateurRepository;
@@ -38,15 +41,17 @@ class RemplissageTest {
 	private PlaneteRepository planeteRepo;
 	@Autowired
 	private EtapeRepository etapeRepo;
-	@Autowired
-	private ReservationRepository reservationRepo;
+
 	@Autowired
 	private VoyageRepository voyageRepo;
 	@Autowired 
 	private AdminRepository adminRepo;
 	@Autowired
 	private UtilisateurRepository utilisateurRepo;
-	
+	@Autowired
+	private PassagerRepository passagerRepo;
+	@Autowired
+	private ReservationRepository reservationRepo;
 	
 	@Test
 	public void RemplissageTest(){
@@ -99,5 +104,33 @@ class RemplissageTest {
 		utilisateurRepo.save(u1);
 		Utilisateur u2 = new Utilisateur("florian","123456","RIAN","Flo",Role.CLIENT,c2);
 		utilisateurRepo.save(u2);
+		
+		
+		Passager pas1 = new Passager("Robert--Ansart","Florian", LocalDate.parse("1993-05-03"));
+		passagerRepo.save(pas1);
+		Passager pas2 = new Passager("Diot","Arthur", LocalDate.parse("1995-05-03"));
+		passagerRepo.save(pas2);
+		Passager pas3 = new Passager("Salem","Rafiq",LocalDate.parse("1995-05-17"));
+		passagerRepo.save(pas3);
+		Reservation r1 = new Reservation(200.00, LocalDate.parse("2023-05-17"), 1);
+		reservationRepo.save(r1);
+		List<Passager> passager1 = new ArrayList<Passager>();
+		passager1.add(pas1);
+		passager1.add(pas2);
+		r1.setPassagers(passager1);
+		r1.setVoyage(v1);
+		r1.setClient(c1);
+		reservationRepo.save(r1);
+		Reservation r2 = new Reservation(300, LocalDate.parse("2023-08-17"), 2);
+		reservationRepo.save(r2);
+		List<Passager> passager2 = new ArrayList<Passager>();
+		passager2.add(pas2);
+		passager2.add(pas3);
+		r2.setPassagers(passager2);
+		r2.setVoyage(v2);
+		r2.setClient(c2);
+		reservationRepo.save(r2);
+		
+		
 	}
 }
