@@ -18,6 +18,7 @@ flex-direction: row;
   margin-right: 1%;
 }
 #voyage{
+  margin-top: 2%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -35,10 +36,39 @@ height: 300px;
   margin-right: 2%;
 }
 .textes{
-
   display: flex;
   flex-direction: column;
+  margin-top: 2%;
+  margin-left: 2%;
 }
 .desciption{
   width: 60%;
+  border: 2px solid #AAABD3;
+  border-radius: 10px;
+    background:transparent;
+  backdrop-filter: blur(30px);
+
+}
+.btn{
+  background-color: #353866;
+}
+.couleur-card{
+  background-color: #E168A9;
+}
+.card{
+   border: 2px solid #AAABD3;
+  border-radius: 10px;
+background-color: transparent;
+  backdrop-filter: blur(50px);
+}
+p{
+  font-family:  Comic Sans MS;
+ // font-weight: bold;
+  color: black;
+}
+h1{
+  color: #AAABD3;
+}
+h5{
+  color: black;
 }
