@@ -109,6 +109,11 @@ public class ReservationRestController {
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
+		List<Passager> passagers = passagerRepo.findByReservationId(id);
+		for(Passager p : passagers) {
+			p.setReservation(null);
+			passagerRepo.save(p);
+		}
 		reservationRepository.deleteById(id);
 	}
 	

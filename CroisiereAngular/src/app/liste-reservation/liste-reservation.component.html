@@ -22,8 +22,6 @@
                     <td>{{reservation.prix}}</td>
                     <td>
                         <div class="btn-group btn-group-sm">
-                            <a class="btn btn-primary" (click)="edit(reservation.id)"><i
-                                    class="bi bi-pencil-square"></i></a>
                             <a class="btn btn-danger" (click)="remove(reservation.id)"><i class="bi bi-trash"></i></a>
                         </div>
                     </td>
@@ -43,7 +41,6 @@
                     <th>Destination</th>
                     <th>Nombre de passagers</th>
                     <th>Prix</th>
-                    <th></th>
                 </tr>
             </thead>
 
@@ -54,13 +51,6 @@
                     <td>{{"test"}}</td>
                     <td>{{reservation.passagers.length}}</td>
                     <td>{{reservation.prix}}</td>
-                    <td>
-                        <div class="btn-group btn-group-sm">
-                            <a class="btn btn-primary" (click)="edit(reservation.id)"><i
-                                    class="bi bi-pencil-square"></i></a>
-                            <a class="btn btn-danger" (click)="remove(reservation.id)"><i class="bi bi-trash"></i></a>
-                        </div>
-                    </td>
                 </tr>
             </tbody>
 

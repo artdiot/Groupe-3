@@ -21,24 +21,26 @@ export class ListeReservationComponent {
 
   listUpcoming(): Array<Reservation> {
     let date = new Date(2023,2,28);
-    console.log(this.reservationService.findAllByClient(this.client.id));
     return this.reservationService.findAllByClient(this.client.id).filter(res => {
-        console.log(res);
         let dateRes: Date = new Date(res.date);
          return dateRes >= date;
       });
   }
 
   listPast(): Array<Reservation> {
-    let date = new Date(2023,2,27);
+    let date = new Date(2023,2,28);
     return this.reservationService.findAllByClient(this.client.id).filter(res => {
       let dateRes: Date = new Date(res.date);
        return dateRes<date;
       });
   }
 
-  edit(id: number): void{}
+  edit(id: number): void{
 
-  remove(id: number): void{}
+  }
+
+  remove(id: number): void{
+    this.reservationService.remove(id);
+  }
 
 }

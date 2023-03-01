@@ -49,7 +49,7 @@ export class ReservationService {
   }
 
   remove(id: number): void {
-    this.http.delete<void>("http://localhost:8888/reservation" + id).subscribe(resp => {
+    this.http.delete<void>("http://localhost:8888/reservation/" + id).subscribe(resp => {
       this.load();
     });
   }
