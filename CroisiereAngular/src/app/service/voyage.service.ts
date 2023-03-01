@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Voyage } from '../model';
+import { Planete, Voyage } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,10 @@ import { Voyage } from '../model';
 export class VoyageService {
   
   voyages: Array<Voyage> = new Array<Voyage>();
-
+  dateDepart: Date = new Date();
+  dateArrivee: Date = new Date();
+  planeteDepart: Planete = new Planete();
+  planeteArrivee: Planete = new Planete();
 
   constructor(private http: HttpClient) {
     this.load();
@@ -47,9 +50,33 @@ export class VoyageService {
     });
   }
 
-  findDateDepart(): void{
-    
-    
+  findDateDepart(id: number): void{
+    this.http.get<Date>("http://localhost:8888/voyage/datedepart/"+ id).subscribe(resp => {
+    this.dateDepart= resp;
+    console.log(this.dateDepart);
+  });
   }
+  
+  findDateArrivee(id: number): void{
+    this.http.get<Date>("http://localhost:8888/voyage/datearrivee/"+ id).subscribe(resp => {
+    this.dateArrivee= resp;
+    console.log(this.dateArrivee);
+    
+  });
+  }
+   
+  findPlaneteDepart(id:number): void{
+    this.http.get<Planete>("http://localhost:8888/voyage/planetedepart/"+ id).subscribe(resp => {
+      this.planeteDepart= resp;
+      console.log(this.planeteDepart.nom);
+  });
 }
 
+findPlaneteArrivee(id:number): void{
+  this.http.get<Planete>("http://localhost:8888/voyage/planetearrivee/"+ id).subscribe(resp => {
+    this.planeteArrivee= resp;
+    console.log(this.planeteArrivee.nom);
+});
+}
+
+}

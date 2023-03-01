@@ -86,4 +86,11 @@ export class VoyageComponent {
     this.dateArrivee = this.etapes[idsize].arrivee;
     this.planeteArrivee=this.etapes[idsize].planeteArrivee
   }
+
+  test():void{
+    this.voyageService.findDateDepart(21);
+    this.voyageService.findDateArrivee(21);
+    this.voyageService.findPlaneteDepart(21);
+    this.voyageService.findPlaneteArrivee(21);
+  }
 }
