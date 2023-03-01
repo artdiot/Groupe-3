@@ -33,12 +33,12 @@ public class Etape {
 	@JsonView(Views.ViewBase.class)
 	private LocalDate arrivee;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "planet_departure_id")
 	@JsonView(Views.ViewBase.class)
 	private Planete planeteDepart;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "planet_arrival_id")
 	@JsonView(Views.ViewBase.class)
 	private Planete planeteArrivee;
@@ -110,6 +110,18 @@ public class Etape {
 	public void setPlanetArrivee(Planete planetArrivee) {
 		this.planeteArrivee = planetArrivee;
 	}
+
+	
+	public Voyage getVoyage() {
+		return voyage;
+	}
+
+	
+	public void setVoyage(Voyage voyage) {
+		this.voyage = voyage;
+	}
+	
+	
 
 	
 	

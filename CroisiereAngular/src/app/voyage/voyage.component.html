@@ -11,7 +11,7 @@
             <label for="planete">Selection de la planete de Départ</label>
             <select class="form-control" id="planeteD" name="planeteD" [(ngModel)]="formEtape.planeteDepart">
                 <option value="">Veuillez sélectionner une planete</option>
-                <option *ngFor="let planete of listPlanete()" [ngValue]="planete">{{planete.nom}} </option>
+                <option *ngFor="let planete of listPlanete()" [ngValue]="planete" selected>{{planete.nom}} </option>
             </select>
         </div>
 

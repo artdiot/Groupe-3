@@ -18,8 +18,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import croisiere.model.Etape;
 import croisiere.model.Views;
 import croisiere.model.Voyage;
+import croisiere.repository.EtapeRepository;
 import croisiere.repository.VoyageRepository;
 
 @RestController
@@ -28,6 +30,9 @@ import croisiere.repository.VoyageRepository;
 public class VoyageRestController {
 	@Autowired
 	private VoyageRepository voyageRepository;
+	
+	@Autowired
+	private EtapeRepository etapeRepository;
 
 	@GetMapping("")
 	@JsonView(Views.ViewVoyage.class)
@@ -52,9 +57,19 @@ public class VoyageRestController {
 	@PostMapping("")
 	@JsonView(Views.ViewVoyage.class)
 	public Voyage create(@RequestBody Voyage voyage) {
-		voyage = voyageRepository.save(voyage);
+		
+		Voyage voyageNew = new Voyage(voyage.getCapacite(),voyage.getEtapes());
+		
+		voyageNew = voyageRepository.save(voyageNew);
+		
+	for (Etape etape : voyageNew.getEtapes()) {
+		
+		etape = etapeRepository.findById(etape.getId()).get();
+		etape.setVoyage(voyageNew);
+			etapeRepository.save(etape);
+		}
 
-		return voyage;
+		return voyageNew;
 	}
 
 	@PutMapping("/{id}")
