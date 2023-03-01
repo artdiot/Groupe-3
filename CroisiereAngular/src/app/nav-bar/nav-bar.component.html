@@ -20,13 +20,14 @@
         <li class="nav-item">
           <a *ngIf="authService.isClient()"class="nav-link" [routerLink]="['/accueilclient/']" [routerLinkActive]="'active'">Espace Client</a>
         </li>
-        
+        <li class="nav-item">
+          <a *ngIf="authService.isClient()"class="nav-link" [routerLink]="['/listeReservation/']" [routerLinkActive]="'active'">Liste Reservation</a>
+        </li>
+
         <li class="nav-item">
           <a *ngIf="authService.isAdmin()"class="nav-link" [routerLink]="['/accueiladmin/']" [routerLinkActive]="'active'">Espace admin</a>
         </li>
-        <li class="nav-item">
-          <a *ngIf="authService.isAdmin()"class="nav-link" [routerLink]="['/listeReservation/']" [routerLinkActive]="'active'">Liste Reservation</a>
-        </li>
+    
         <li class="nav-item">
           <a *ngIf="authService.isAdmin()"class="nav-link" [routerLink]="['/voyage/']" [routerLinkActive]="'active'">Voyage</a>
         </li>
