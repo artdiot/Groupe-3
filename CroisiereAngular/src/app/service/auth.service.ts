@@ -46,4 +46,13 @@ export class AuthService {
       return false;
     }
   }
+  isAdmin(): boolean{
+    if(this.connected){
+      return(this.connected.role=="ADMIN");
+    }
+    else{
+      return false;
+    }
+  }
+
 }
