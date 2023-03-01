@@ -14,6 +14,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ListeReservationComponent } from './liste-reservation/liste-reservation.component';
 import { VoyageComponent } from './voyage/voyage.component';
+import { ListeVoyageComponent } from './liste-voyage/liste-voyage.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { VoyageComponent } from './voyage/voyage.component';
     NavBarComponent,
     ReservationComponent,
     ListeReservationComponent,
-    VoyageComponent
+    VoyageComponent,
+    ListeVoyageComponent
   ],
   imports: [
     BrowserModule,
