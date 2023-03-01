@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Etape, Planete, Voyage } from '../model';
+
 import { EtapeService } from '../service/Etape.service';
 import { PlaneteService } from '../service/planete.service';
 import { VoyageService } from '../service/voyage.service';

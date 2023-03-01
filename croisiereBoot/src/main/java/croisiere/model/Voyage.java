@@ -112,7 +112,7 @@ public class Voyage {
 			
 			if (etape.getDepart().isBefore(depart)) {
 			depart = etape.getDepart();
-			}
+			} 
 			
 			if (etape.getArrivee().isAfter(arrivee)) {
 			arrivee = etape.getArrivee();
