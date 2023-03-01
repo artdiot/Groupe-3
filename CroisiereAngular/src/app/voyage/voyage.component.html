@@ -4,100 +4,81 @@
         
 
         <div class="form-group">
-            <label for="version">Date de depart</label> <input type="date" class="form-control" id="dateDepart" name="dateDepart" [(ngModel)]="formEtape.depart"  />
+            <label for="dateDepart">Date de depart</label> <input type="date" class="form-control" id="dateDepart" name="dateDepart" [(ngModel)]="formEtape.depart"  />
         </div>
-       
-        <div>
-            <label for="planete">Selection de la planete de Départ</label>
-            <select class="form-control" id="planeteD" name="planeteD" [(ngModel)]="formEtape.planeteDepart">
-                <option value="">Veuillez sélectionner une planete</option>
-                <option *ngFor="let planete of listPlanete()" [ngValue]="planete" selected>{{planete.nom}} </option>
-            </select>
+        
+        <div class="form-group" *ngIf="!listeVide">
+            <label for="planeteD2" >planete de depart</label> <input type="string" class="form-control" id="planeteD2" name="planeteD2" [value]="formEtape.planeteDepart.nom" readonly />
         </div>
 
-        <div>
-            <label for="planete">Selection de la planete d'Arrivee</label>
-            
-            <select class="form-control" id="planeteA" name="planeteA" [(ngModel)] ="formEtape.planeteArrivee">
+        <div  class="form-group" *ngIf="listeVide">
+            <label for="planeteD">Selection de la planete de Départ</label>
+            <select class="form-control" id="planeteD" name="planeteD" [(ngModel)]="formEtape.planeteDepart">
                 <option value="">Veuillez sélectionner une planete</option>
                 <option *ngFor="let planete of listPlanete()" [ngValue]="planete" >{{planete.nom}} </option>
             </select>
         </div>
-        
+
+       <div></div>
+
+        <div>
+            <label for="planeteA">Selection de la planete d'Arrivee</label>
+            
+            <select class="form-control" id="planeteA" name="planeteA" [(ngModel)]="formEtape.planeteArrivee">
+                <option value="">Veuillez sélectionner une planete</option>
+                <option *ngFor="let planete of listPlanete()" [ngValue]="planete"  >{{planete.nom}} </option>
+            </select>
+        </div>
+
+       
+
         <div class="card-footer">
             <div class="btn-group btn-group-lg float-right">
                 <a class="btn btn-outline-primary" (click)="addEtape()"><i class="bi bi-check-square-fill"></i></a>
     
             </div>
         </div>
-
-
-    <div class="card-footer">
-        <div class="btn-group btn-group-lg float-right">
-            <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill"></i></a>
-
-        </div>
     </div>
 </div>
-</div>
 
-<div class="card mt-3" *ngIf="!formEtape">
+<div class="card mt-3" *ngIf="(!formEtape && !formVoyage)">
     <div class="card-header bg-primary text-white display-6">Voulez vous ajouter une autre étape</div>
     <div class="card-body">
         
         <div class="btn-group btn-group-lg float-right">
-            <a class="btn btn-success" (click)="yes()"><i class="bi bi-check-square-fill"></i></a>
+            <button type="button" class="btn btn-success" (click)="yes()">yes</button>
 
         </div>
          <div class="btn-group btn-group-lg float-right">
-            <a class="btn btn-success" (click)="no()"><i class="bi bi-check-square-fill"></i></a>
-
+            <button type="button" class="btn btn-success" (click)="no()">no</button>
         </div>
-
-</div>
+    </div>
 </div>
 
 <div class="card mt-3" *ngIf="formVoyage">
-    <div class="card-header bg-primary text-white display-6">Edition d'un Voyage</div>
+    <div class="card-header bg-primary text-white display-6">Creation d'un Voyage</div>
     <div class="card-body">
-        <div class="form-group">
-            <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formVoyage.id" readonly/>
-        </div>
-        <div class="form-group">
-            <label for="version">Version:</label> <input type="number" class="form-control" id="version" name="version" [(ngModel)]="formVoyage.version" readonly />
-        </div>
+        
 
         <div class="form-group">
             <label for="version">Capacite:</label> <input type="number" class="form-control" id="capacite" name="capacite" [(ngModel)]="formVoyage.capacite"  />
         </div>
 
         <div class="form-group">
-            <label for="version">Date de depart</label> <input type="date" class="form-control" id="dateDepart" name="dateDepart" [(ngModel)]="formEtape.depart"  />
-        </div>
-       
-        <div>
-            <label for="planete">Selection de la planete de Départ</label>
-            <select class="form-control" id="planeteD" name="planeteD" [(ngModel)]="formEtape.planeteDepart">
-                <option value="">Veuillez sélectionner une planete</option>
-                <option *ngFor="let planete of listPlanete()" >{{planete.nom}} </option>
-            </select>
+            <label for="version">Planete de depart : {{planeteDepart.nom}}</label> 
         </div>
 
-        <div>
-            <label for="planete">Selection de la planete d'Arrivee</label>
-            <select class="form-control" id="planeteA" name="planeteA" [(ngModel)]="formEtape.planeteArrivee">
-                <option value="">Veuillez sélectionner une planete</option>
-                <option *ngFor="let planete of listPlanete()" >{{planete.nom}} </option>
-            </select>
-        </div>
-        
-        <div class="card-footer">
-            <div class="btn-group btn-group-lg float-right">
-                <a class="btn btn-outline-primary"><i class="bi bi-check-square-fill"></i></a>
-    
-            </div>
+        <div class="form-group">
+            <label for="version">Date de depart : {{dateDepart | date}}</label> 
         </div>
 
+        <div class="form-group">
+            <label for="version">Planete d'Arrivee : {{planeteArrivee.nom}}</label> 
+        </div>
+
+        <div class="form-group">
+            <label for="version">Date d'Arrivee : {{dateArrivee | date}}</label> 
+        </div>
     <div class="card-footer">
         <div class="btn-group btn-group-lg float-right">
             <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill"></i></a>

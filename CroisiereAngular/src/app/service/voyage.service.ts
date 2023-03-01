@@ -18,8 +18,6 @@ export class VoyageService {
     return this.voyages;
   }
 
- 
-
   findById(id: number): Observable<Voyage> {
     return this.http.get<Voyage>("http://localhost:8888/voyage/" + id);
   }
@@ -46,6 +44,11 @@ export class VoyageService {
     this.http.get<Array<Voyage>>("http://localhost:8888/voyage").subscribe(resp => {
       this.voyages = resp;
     });
+  }
+
+  findDateDepart(): void{
+    
+    
   }
 }
 
