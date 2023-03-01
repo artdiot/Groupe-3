@@ -5,6 +5,7 @@ import { AuthService } from '../service/auth.service';
 import { PassagerService } from '../service/passager.service';
 import { ReservationService } from '../service/reservation.service';
 import { VoyageService} from '../service/voyage.service';
+import {FormBuilder, FormArray, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-reservation',
@@ -18,6 +19,8 @@ export class ReservationComponent {
   voyage : Voyage = null;
   formVoyage : Voyage;
   formPassager: Passager = new Passager();
+  passagers : Array<Passager> = new Array<Passager>();
+  showConfirm: boolean = false;
 
   constructor(private reservationService: ReservationService, private voyageService : VoyageService, private authService: AuthService, private router : Router, 
     private passagerService: PassagerService) {
@@ -30,6 +33,7 @@ export class ReservationComponent {
   etapes(){
     return this.voyage.etapes;
   }
+
   add(): void {
 
     this.formVoyage = new Voyage(200,123);
@@ -64,8 +68,7 @@ export class ReservationComponent {
       this.reservationService.update(this.formReservation);
     } else { // CREATE
       this.formReservation.voyage=this.voyage;
-      this.formReservation.passagers=new Array<Passager>();
-      this.formReservation.passagers.push(this.formPassager);
+      this.formReservation.passagers=this.passagers;
       this.formReservation.client = this.authService.connected.compte as Client; 
       this.reservationService.createForm(this.formReservation);
       this.router.navigate(['/accueilclient',{id:this.authService.connected.compte.id}]);
@@ -79,5 +82,24 @@ export class ReservationComponent {
 
   cancel(): void {
     this.formReservation = null;
+    this.showConfirm=false;
+    this.formPassager=new Passager();
+  }
+
+  addPassager():void{
+    this.passagerService.create(this.formPassager);
+    this.formPassager=null;
+  }
+
+  yes(){
+    
+    this.formPassager=new Passager();
+    this.passagers.push(this.passagerService.passagerResp);
+  }
+
+  no(){
+    this.passagers.push(this.passagerService.passagerResp);
+    this.formPassager=null;
+    this.showConfirm=true;
   }
 }

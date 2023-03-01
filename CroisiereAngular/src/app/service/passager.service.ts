@@ -9,6 +9,7 @@ import { Passager } from '../model';
 export class PassagerService {
 
   passagers: Array<Passager> = new Array<Passager>();
+  passagerResp: Passager=new Passager();
 
   constructor(private http: HttpClient) {
     this.load();
@@ -27,6 +28,7 @@ export class PassagerService {
   create(passager: Passager): void {
     this.http.post<Passager>("http://localhost:8888/passager", passager).subscribe(resp => {
       this.load();
+      this.passagerResp=resp;
     });
   }
 

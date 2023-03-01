@@ -1,23 +1,44 @@
-<form>
-    <div class="row">
-    <div class="row">
-      <h3>Coordonnée passager</h3>
-        <div class="col">
-            <label for="nom">Nom</label>
-          <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="formPassager.nom" name="nom">
+<div class="card mt-3" *ngIf="formPassager">
+  <form>
+      <div class="row">
+      <div class="row" id="forms">
+        <h3>Coordonnées passager</h3>
+          <div class="col">
+              <label for="nom">Nom</label>
+            <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="formPassager.nom" name="nom">
+          </div>
+          <div class="col">
+              <label for="prenom">Prenom</label>
+            <input type="text" class="form-control" placeholder="Prenom" [(ngModel)]="formPassager.prenom" name="prenom">
+          </div>
+          <div class="col">
+            <label for="dateNaissance">Date de naissance</label>
+          <input type="date" class="form-control" placeholder="Date" [(ngModel)]="formPassager.dateNaissance" name="dateNaissance">
+          </div>
         </div>
-        <div class="col">
-            <label for="prenom">Prenom</label>
-          <input type="text" class="form-control" placeholder="Prenom" [(ngModel)]="formPassager.prenom" name="prenom">
-        </div>
-        <div class="col">
-          <label for="dateNaissance">Date de naissance</label>
-        <input type="date" class="form-control" placeholder="Date" [(ngModel)]="formPassager.dateNaissance" name="dateNaissance">
-        </div>
-      </div>
+  </div>
+  <div class="btn-group btn-group-lg float-right">
+      <a class="btn btn-outline-primary" (click)="addPassager()"><i class="bi bi-check-square-fill"></i></a>
+  </div>
+  </form>
+</div>
+
+<div class="card mt-3" *ngIf="(!formPassager)&&(!showConfirm)">
+  <div class="card-header bg-primary text-white display-6">Voulez vous ajouter un autre passager</div>
+  <div class="card-body">
       
-  
-      <div class="col-md-4 mb-4" *ngIf="voyage">
+      <div class="btn-group btn-group-lg float-right">
+          <a class="btn btn-success" (click)="yes()"><i class="bi bi-check-square-fill"></i></a>
+
+      </div>
+       <div class="btn-group btn-group-lg float-right">
+          <a class="btn btn-success" (click)="no()"><i class="bi bi-check-square-fill"></i></a>
+      </div>
+
+</div>
+     </div>
+     <form>
+      <div class="col-md-4 mb-4" *ngIf="showConfirm">
         <br>
         <div class="card mb-4">
           <div class="card-header py-3">
@@ -50,6 +71,4 @@
           </div>
         </div>
       </div>
-    </div>
-
   </form>

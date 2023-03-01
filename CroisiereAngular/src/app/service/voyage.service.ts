@@ -10,6 +10,7 @@ export class VoyageService {
   
   voyages: Array<Voyage> = new Array<Voyage>();
 
+
   constructor(private http: HttpClient) {
     this.load();
   }
@@ -25,7 +26,7 @@ export class VoyageService {
   }
 
   create(voyage: Voyage): void {
-    this.http.post<Voyage>("http://localhost:8888/voyage", voyage).subscribe(resp => {
+      this.http.post<Voyage>("http://localhost:8888/voyage", voyage).subscribe(resp => {
       this.load();
     });
   }

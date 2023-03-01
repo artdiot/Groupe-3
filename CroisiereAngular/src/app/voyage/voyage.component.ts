@@ -27,7 +27,7 @@ export class VoyageComponent {
       });
   }
 
-  addEtape(){
+  addEtape():void{
 
     
     this.etapeService.create(this.formEtape);

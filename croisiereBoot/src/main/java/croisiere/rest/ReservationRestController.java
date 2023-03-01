@@ -82,9 +82,11 @@ public class ReservationRestController {
 		reservation = reservationRepository.save(reservation);
 
 		Client client = clientRepo.save(reservation.getClient());
-		Passager passager = reservation.getPassagers().get(0);
-		passager.setReservation(reservation);
-		passager = passagerRepo.save(passager);
+		for(Passager p : reservation.getPassagers()) {
+			p.setReservation(reservation);
+			passagerRepo.save(p);
+		}
+		
 		
 		reservation = reservationRepository.save(reservation);
 		return reservation;
