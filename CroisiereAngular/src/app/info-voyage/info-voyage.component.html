@@ -1,0 +1,17 @@
+<div *ngIf="voyage" class="card" style="width: 18rem">
+  <div style="text-align: center">
+
+    <img width="50" height="50" c src="assets/information-icon.png" alt="Card image cap">
+  </div>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title">Informations voyage</h5>
+      <p class="card-text">Prix : {{voyage.prix}} €</p>
+      <div *ngFor="let e of etapes(id)">{{e.planeteDepart.nom}} - </div>
+      <div>{{(voyage.etapes[(voyage.etapes.length)-1]).planeteArrivee.nom}}</div>
+      <p class="card-text">Du {{(voyage.etapes[0]).depart}} au
+        {{(voyage.etapes[(voyage.etapes.length)-1]).arrivee}}</p>
+      <a [routerLink]="['/reservation',id]" [routerLinkActive]="'active'" class="btn btn-primary">Réserver</a>
+    </div>
+  </div>
+</div>

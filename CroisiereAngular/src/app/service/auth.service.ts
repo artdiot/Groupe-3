@@ -19,7 +19,6 @@ export class AuthService {
       this.connected = resp;
       if (this.connected) {
         if (this.connected.role == "CLIENT") {
-          console.log(this.connected.compte.id);
           this.router.navigate(['/accueilclient/',{id: this.connected.compte.id}]);
         }
         if(this.connected.role=="ADMIN"){

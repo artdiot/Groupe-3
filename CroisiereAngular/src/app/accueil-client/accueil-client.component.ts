@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Reservation } from '../model';
+import { Reservation, Voyage } from '../model';
 import { ReservationService } from '../service/reservation.service';
 import { Client } from '../model';
 import { ClientService } from '../service/client.service';
 import { AuthService } from '../service/auth.service';
+import { VoyageService } from '../service/voyage.service';
 
 @Component({
   selector: 'app-accueil-client',
@@ -17,7 +18,8 @@ export class AccueilClientComponent {
   formReservation: Reservation = null;
   client:Client=new Client();
 
-  constructor(private reservationService: ReservationService,private clientService: ClientService, private authService: AuthService) {
+  constructor(private reservationService: ReservationService,private clientService: ClientService, 
+    private authService: AuthService, private voyageService: VoyageService) {
     this.client=this.authService.connected.compte as Client;
   }
 
@@ -52,6 +54,8 @@ export class AccueilClientComponent {
   cancel(): void {
     this.formReservation = null;
   }
+
+
 }
 
 
