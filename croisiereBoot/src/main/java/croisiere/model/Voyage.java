@@ -101,6 +101,31 @@ public class Voyage {
 		 
 		 return distance;
 	}
+	public LocalDate calculDateDepart() {
+		
+		LocalDate depart = etapes.get(0).getDepart();
+		
+		for(Etape etape: etapes) {
+			
+			if (etape.getDepart().isBefore(depart)) {
+			depart = etape.getDepart();
+			}
+		}
+		return depart;
+	}
+	
+public LocalDate calculDateArrivee() {
+		
+		LocalDate arrivee = etapes.get(0).getArrivee();
+		
+		for(Etape etape: etapes) {
+			
+			if (etape.getArrivee().isAfter(arrivee)) {
+			arrivee = etape.getDepart();
+			}
+		}
+		return arrivee;
+	}
 	
 	public int calculDuree() {
 		
@@ -118,11 +143,37 @@ public class Voyage {
 			arrivee = etape.getArrivee();
 			}
 	}
-		System.out.println("La date de départ est le : "+depart);
-		System.out.println("La date de fin est le : "+arrivee);
 		duree = (int) (ChronoUnit.DAYS.between(depart, arrivee)+1);
-		System.out.println("Le temps du trajet est de " + duree +" jours");
+		
 		return duree;
+	}
+	
+	public Planete calculPlaneteDepart() {
+		Planete planeteDepart = etapes.get(0).getPlanetDepart();
+		int min = etapes.get(0).getId();
+		
+		for(Etape etape: etapes) {
+			
+			if (etape.getId()< min) {
+			min = etape.getId();	
+			planeteDepart=etape.getPlanetDepart();
+			} 
+		}
+		return planeteDepart;
+	}
+	
+	public Planete calculPlaneteArrivee() {
+		Planete planeteArrivee = etapes.get(0).getPlanetArrivee();
+		int max = etapes.get(0).getId();
+		
+		for(Etape etape: etapes) {
+			
+			if (etape.getId()>max) {
+			max = etape.getId();	
+			planeteArrivee=etape.getPlanetDepart();
+			} 
+		}
+		return planeteArrivee;
 	}
 	
 	public double calculPrix() {

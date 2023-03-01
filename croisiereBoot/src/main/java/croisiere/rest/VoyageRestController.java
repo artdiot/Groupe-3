@@ -1,5 +1,6 @@
 package croisiere.rest;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import croisiere.model.Etape;
+import croisiere.model.Planete;
 import croisiere.model.Views;
 import croisiere.model.Voyage;
 import croisiere.repository.EtapeRepository;
@@ -70,7 +72,7 @@ public class VoyageRestController {
 		}
 
 		return voyageNew;
-	}
+	} 
 
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewVoyage.class)
@@ -93,5 +95,34 @@ public class VoyageRestController {
 	public void delete(@PathVariable Integer id) {
 		voyageRepository.deleteById(id);
 	}
+	
+	@GetMapping("/datedepart/{id}")
+	public LocalDate dateDepart(@PathVariable Integer id) {
+		Optional<Voyage> optVoyage = voyageRepository.findById(id);
+		
+		return optVoyage.get().calculDateDepart();
+	}
+	
+	@GetMapping("/datearrivee/{id}")
+	public LocalDate dateArrivee(@PathVariable Integer id) {
+		Optional<Voyage> optVoyage = voyageRepository.findById(id);
+		
+		return optVoyage.get().calculDateArrivee();
+	}
+	
+	@GetMapping("/planetedepart/{id}")
+	public Planete planeteDepart(@PathVariable Integer id) {
+		Optional<Voyage> optVoyage = voyageRepository.findById(id);
+		
+		return optVoyage.get().calculPlaneteDepart();
+	}
+	
+	@GetMapping("/planetearrivee/{id}")
+	public Planete planeteArrivee(@PathVariable Integer id) {
+		Optional<Voyage> optVoyage = voyageRepository.findById(id);
+		
+		return optVoyage.get().calculPlaneteArrivee();
+	}
+
 
 }
