@@ -15,7 +15,7 @@ export class VoyageComponent {
   id:number;
   formVoyage: Voyage = null;
   formEtape: Etape = new Etape();
-  planeteD : Planete;
+  
   etapes : Array<Etape>=new Array<Etape>();
   etapeSave : Etape = new Etape();
   
@@ -29,25 +29,35 @@ export class VoyageComponent {
 
   addEtape(){
 
-    this.etapes.push(this.formEtape);
+    
     this.etapeService.create(this.formEtape);
     this.formEtape=null;
   }
 
   yes(){
-
+    
     this.formEtape=new Etape();
-    this.formEtape.depart = this.etapeService.etapeResp.arrivee;
-    this.formEtape.planeteDepart = this.etapeService.etapeResp.planeteArrivee;
+    this.etapes.push(this.etapeService.etapeResp);
+
+   this.formEtape.depart = this.etapeService.etapeResp.arrivee;
+   
+   this.formEtape.planeteDepart = this.etapeService.etapeResp.planeteArrivee;
     
   }
 
-  no(){}
+  no(){
+    this.etapes.push(this.etapeService.etapeResp);
+
+    this.formVoyage=new Voyage();
+  }
 
   save(){
 
+    
     this.formVoyage.etapes= this.etapes;
-    //this.voyageService.create(this.formVoyage);
+    this.voyageService.create(this.formVoyage);
+
+    
     
 
   }

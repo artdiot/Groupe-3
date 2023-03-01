@@ -45,6 +45,7 @@ public class Voyage {
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "voyage")
 	@JsonView(Views.ViewVoyage.class)
 	private List<Etape> etapes = new ArrayList<>();
+	
 	@OneToMany(mappedBy = "voyage")
 	@JsonView(Views.ViewVoyage.class)
 	private List<Reservation> reservations = new ArrayList<>();
@@ -72,6 +73,9 @@ public class Voyage {
 	public Voyage (int capacite, List<Etape> etapes) {
 		this.capacite = capacite;
 		this.etapes = etapes;
+		this.distance= calculDistance();
+		this.duree=calculDuree();
+		this.prix=calculPrix();
 	}
 	
 	public Voyage(double prix, double distance, int duree, int capacite, List<Etape> etapes) {
@@ -83,7 +87,7 @@ public class Voyage {
 		this.etapes = etapes;
 	}
 	
-	public void calculDistance() {
+	public double calculDistance() {
 	
 		distance = 0; 
 		
@@ -93,9 +97,12 @@ public class Voyage {
 		}
 		
 		 System.out.println("La distance du Voyage, la distance est maintenant de "+ distance);
+		 
+		 
+		 return distance;
 	}
 	
-	public void calculTemps() {
+	public int calculDuree() {
 		
 		
 		LocalDate depart = etapes.get(0).getDepart();
@@ -115,11 +122,13 @@ public class Voyage {
 		System.out.println("La date de fin est le : "+arrivee);
 		duree = (int) (ChronoUnit.DAYS.between(depart, arrivee)+1);
 		System.out.println("Le temps du trajet est de " + duree +" jours");
+		return duree;
 	}
 	
-	public void calculPrix() {
-		prix = duree * 20;
+	public double calculPrix() {
+		double prix = duree * 20;
 		System.out.println("le prix est de " + prix + " dollars spaciaux");
+		return prix;
 	}
 	
 	public Integer getId() {

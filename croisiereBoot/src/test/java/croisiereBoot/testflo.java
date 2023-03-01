@@ -43,7 +43,7 @@ public class testflo {
 		
 		voyage.calculDistance();
 		
-		voyage.calculTemps();
+		voyage.calculDuree();
 		
 		voyage.calculPrix();
 		
