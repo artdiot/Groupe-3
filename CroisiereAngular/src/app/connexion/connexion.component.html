@@ -1,8 +1,15 @@
+
+<div class="form-box">
+    <div class="form-value">
+        <div class="inputbox">
 <div *ngIf="!isConnected()" class="form-group">
     Login : <input type="text" class="form-control" [(ngModel)]="login" id="login" name="login"/><br>
     Mot de passe : <input type="text" class="form-control" [(ngModel)]="password" id="password" name="password"/><br>
     </div>
-    <a class="btn btn-success" (click)="connect()"><i class="bi bi-check-square-fill"></i></a>
-    <br>
     
+    <button class="connexion" (click)="connect()">Connexion</button>
+    <br>
+</div>
     <a [routerLink]="['/inscription']" [routerLinkActive]="'active'" >Pas encore de compte.</a>
+</div>
+</div>
