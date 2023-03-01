@@ -16,11 +16,8 @@ export class AccueilAdminComponent {
   
   
 
-  constructor(private route: ActivatedRoute, private planeteService: PlaneteService, private etapeService: EtapeService, private voyageService: VoyageService){
-    this.route.params.subscribe(params => {
-      this.id=params["id"];
-      console.log(this.id);
-      });
+  constructor(private planeteService: PlaneteService, private etapeService: EtapeService, private voyageService: VoyageService){
+
   }
 
 
