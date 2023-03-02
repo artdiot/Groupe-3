@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Client, Passager, Reservation, Voyage } from '../model';
 import { AuthService } from '../service/auth.service';
 import { PassagerService } from '../service/passager.service';
@@ -21,13 +21,17 @@ export class ReservationComponent {
   formPassager: Passager = new Passager();
   passagers : Array<Passager> = new Array<Passager>();
   showConfirm: boolean = false;
+  id : number;
 
   constructor(private reservationService: ReservationService, private voyageService : VoyageService, private authService: AuthService, private router : Router, 
-    private passagerService: PassagerService) {
-    voyageService.findById(1).subscribe(resp=>{
-      this.voyage=resp;
-      console.log("prix " + resp.prix );
-      });
+    private passagerService: PassagerService, private route : ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.id = params["id"];
+      voyageService.findById(this.id).subscribe(resp=>{
+        this.voyage=resp;
+        });
+    })
+
     }
 
   etapes(){

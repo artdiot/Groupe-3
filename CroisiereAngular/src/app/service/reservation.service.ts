@@ -9,6 +9,7 @@ import { Passager, Reservation } from '../model';
 export class ReservationService {
   
   reservations: Array<Reservation> = new Array<Reservation>();
+  reservationsClient: Array<Reservation> = new Array<Reservation>();
 
   constructor(private http: HttpClient) {
     this.load();
@@ -22,8 +23,11 @@ export class ReservationService {
     return this.http.get<Array<Reservation>>("http://localhost:8888/reservation/etapes/");
   } */
 
-  findAllByClient(id : number): Array<Reservation>{
-        return this.findAll().filter(res => { return res.client.id == id;});
+  findAllByClient(id : number): void{
+        this.http.get<Array<Reservation>>("http://localhost:8888/client/" + id + "/reservations/").subscribe(resp => {
+            this.reservationsClient = resp;
+          }
+        );
   }
  
   findById(id: number): Observable<Reservation> {
