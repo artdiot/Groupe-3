@@ -1,18 +1,16 @@
 .card-body{
     position: relative;
-    width: 20%;
-    height: 30%;
+    width: 200;
+    height: 300px;
     background: white;
     border: 2px solid red;
     border-radius: 20px;
    
-   display: flex;
-   justify-content: center;
-
-   flex-direction: column;
-   flex-wrap: wrap;
-   margin-left: 2%;
-   margin-right: 2%;
+    display: flex;
+    //justify-content: center;
+    flex-direction: column;
+    margin-left: 2%;
+    margin-right: 2%;
  }
  #voyage{
   display: flex;
@@ -46,6 +44,12 @@
   display: flex;
   flex-direction: column;
 
-width: 20%;
-height: 50%;
+width: 100%;
+
+}
+.listcard{
+  display: flex;
+  flex-direction: row;
+
+  flex-wrap: wrap;
 }

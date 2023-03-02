@@ -1,4 +1,4 @@
-
+<div class="listcard">
 <div class="card-body" *ngFor="let voy of listeVoyage()">
         
         <div id="voyage">
@@ -7,9 +7,9 @@
                        
                         <tr *ngFor="let e of voy.etapes; let index = index">
                                <div *ngIf="index<=(voy.etapes.length)-1">
-                                        <td *ngIf="index<=(voy.etapes.length)-1">{{e.planeteDepart.nom}}</td></div>
+                                        <td *ngIf="index<=(voy.etapes.length)-1">Etape {{index +1}}:{{e.planeteDepart.nom}}</td></div>
                                         <div *ngIf="index>=(voy.etapes.length)-1">
-                                        <td >{{(voy.etapes[(voy.etapes.length)-1]).planeteArrivee.nom}}</td></div>
+                                        <td >Etape {{index +1}}:{{(voy.etapes[(voy.etapes.length)-1]).planeteArrivee.nom}}</td></div>
                            
  
                             </tr>
@@ -23,12 +23,13 @@
                        
                
         </div>
-       <div class="info"><p class="card-text">distance : {{voy.distance}}</p>
-       <p class="card-text">prix : {{voy.prix}}</p>
+       <div class="info"><p class="card-text">Distance : {{voy.distance}}</p> </div>
+        <div class="info"> <p class="card-text">Prix : {{voy.prix}}</p>
         
         <div>
         <a *ngIf="connected()" [routerLink]="['/reservation',{id:voy.id}]" [routerLinkActive]="'active'" class="btn btn-primary">Réserver</a>
         <a *ngIf="!connected()" [routerLink]="['/connexion']" [routerLinkActive]="'active'" class="btn btn-primary">Se connecter</a>
+</div>
 </div>
 </div>
 </div>
