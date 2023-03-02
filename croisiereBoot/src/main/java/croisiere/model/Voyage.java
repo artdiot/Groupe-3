@@ -93,13 +93,11 @@ public class Voyage {
 		
 		for(Etape etape: etapes) {
 			 distance = distance + etape.getPlanetDepart().calculDistance(etape.getPlanetArrivee());
-			 System.out.println("Apres l'Etape, la distance est maintenant de "+ distance);
 		}
 		
-		 System.out.println("La distance du Voyage, la distance est maintenant de "+ distance);
 		 
 		 
-		 return distance;
+		 return Math.floor(distance);
 	}
 	public LocalDate calculDateDepart() {
 		
@@ -150,8 +148,9 @@ public LocalDate calculDateArrivee() {
 	
 	public Planete calculPlaneteDepart() {
 		Planete planeteDepart = etapes.get(0).getPlanetDepart();
+		System.out.println("test1");
 		int min = etapes.get(0).getId();
-		
+		System.out.println("test2");
 		for(Etape etape: etapes) {
 			
 			if (etape.getId()< min) {

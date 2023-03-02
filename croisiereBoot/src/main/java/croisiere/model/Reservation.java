@@ -54,10 +54,12 @@ public class Reservation {
 		super();
 	}
 	
-	public Reservation( double prix, LocalDate date, int classe) {
-		this.prix = prix;
-		this.date = date;
-		this.classe = classe;
+	public Reservation(Voyage voyage, List<Passager> passagers, Client client) {
+		this.date = voyage.calculDateDepart();
+		this.voyage = voyage;
+		this.passagers = passagers;
+		this.client = client;
+		this.prix = calculPrix();
 	}
 
 	public Integer getId() {
@@ -114,6 +116,10 @@ public class Reservation {
 
 	public void setVoyage(Voyage voyage) {
 		this.voyage = voyage;
+	}
+	
+	public double calculPrix() {
+		return this.prix=this.voyage.calculPrix()*passagers.size();
 	}
 	
 	

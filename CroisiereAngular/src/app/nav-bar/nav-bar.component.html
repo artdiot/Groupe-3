@@ -5,33 +5,33 @@
     </button>
     <div class="collapse navbar-collapse " id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['']" [routerLinkActive]="'active'">  Accueil </a>
+        <li class="nav-item active ">
+          <a class="nav-link" [routerLink]="['']" >  Accueil </a>
+        </li>
+        
+        <li class="nav-item">
+          <a *ngIf="!authService.connected" class="nav-link" [routerLink]="['/connexion']" >Connexion</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="!authService.connected" class="nav-link" [routerLink]="['/inscription']" >Inscription</a>
+        </li>
+
+
+        <li class="nav-item">
+          <a *ngIf="authService.isClient()"class="nav-link" [routerLink]="['/accueilclient/']" >Espace Client</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="authService.isClient()"class="nav-link" [routerLink]="['/listeReservation/']" >Liste Reservation</a>
         </li>
 
         <li class="nav-item">
-          <a *ngIf="!authService.connected" class="nav-link" [routerLink]="['/connexion']" [routerLinkActive]="'active'">Connexion</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="!authService.connected" class="nav-link" [routerLink]="['/inscription']" [routerLinkActive]="'active'">Inscription</a>
-        </li>
-
-
-        <li class="nav-item">
-          <a *ngIf="authService.isClient()"class="nav-link" [routerLink]="['/accueilclient/']" [routerLinkActive]="'active'">Espace Client</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="authService.isClient()"class="nav-link" [routerLink]="['/listeReservation/']" [routerLinkActive]="'active'">Liste Reservation</a>
-        </li>
-
-        <li class="nav-item">
-          <a *ngIf="authService.isAdmin()"class="nav-link" [routerLink]="['/accueiladmin/']" [routerLinkActive]="'active'">Espace admin</a>
+          <a *ngIf="authService.isAdmin()"class="nav-link" [routerLink]="['/accueiladmin/']" >Espace admin</a>
         </li>
     
+          
         <li class="nav-item">
-          <button *ngIf="authService.connected"class="btn"><i class="bi bi-x-lg"></i>
-          </button>
-        </li>     
+          <a *ngIf="authService.connected" class="nav-link"  [routerLink]="['']"  (click)="deconnect()">Déconnexion</a>
+        </li>  
       </ul>
     </div>
   </nav>

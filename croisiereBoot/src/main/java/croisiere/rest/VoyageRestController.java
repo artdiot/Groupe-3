@@ -113,7 +113,6 @@ public class VoyageRestController {
 	@GetMapping("/planetedepart/{id}")
 	public Planete planeteDepart(@PathVariable Integer id) {
 		Optional<Voyage> optVoyage = voyageRepository.findById(id);
-		
 		return optVoyage.get().calculPlaneteDepart();
 	}
 	
