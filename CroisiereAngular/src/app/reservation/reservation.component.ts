@@ -25,8 +25,9 @@ export class ReservationComponent {
 
   constructor(private reservationService: ReservationService, private voyageService : VoyageService, private authService: AuthService, private router : Router, 
     private passagerService: PassagerService, private route : ActivatedRoute) {
-    this.route.queryParams.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.id = params["id"];
+      console.log(this.id);
       voyageService.findById(this.id).subscribe(resp=>{
         this.voyage=resp;
         });

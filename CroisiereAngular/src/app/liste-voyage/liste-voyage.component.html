@@ -9,7 +9,8 @@
                         <div *ngFor="let e of voy.etapes">{{e.planeteDepart.nom}} - </div> <div>{{(voy.etapes[(voy.etapes.length)-1]).planeteArrivee.nom}}</div>
                 </div>
                 </div>
-        <a [routerLink]="['/connexion']" [routerLinkActive]="'active'" class="btn btn-primary">Reserver</a>
+        <a *ngIf="connected()" [routerLink]="['/reservation',{id:voy.id}]" [routerLinkActive]="'active'" class="btn btn-primary">Réserver</a>
+        <a *ngIf="!connected()" [routerLink]="['/connexion']" [routerLinkActive]="'active'" class="btn btn-primary">Se connecter</a>
 </div>
 </div>
 

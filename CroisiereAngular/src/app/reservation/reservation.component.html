@@ -38,7 +38,7 @@
 </div>
      </div>
      <form>
-      <div class="col-md-4 mb-4" *ngIf="showConfirm">
+      <div class="col-md-4 mb-4">
         <br>
         <div class="card mb-4">
           <div class="card-header py-3">
@@ -69,7 +69,7 @@
                 <span><strong>{{passagers.length*voyage.prix}}</strong></span>
               </li>
             </ul>
-            <button class="btn btn-primary btn-lg btn-block" type="button" (click)="save()">
+            <button *ngIf="showConfirm" class="btn btn-primary btn-lg btn-block" type="button" (click)="save()">
                 Confirmer la reservation            
               </button>
           </div>

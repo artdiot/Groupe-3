@@ -90,7 +90,7 @@ public class ReservationRestController {
 		LocalDate dateDepart = reservation.getVoyage().calculDateDepart();
 		reservation.setDate(dateDepart);
 		
-		
+		reservation.setPrix(reservation.calculPrix());
 		reservation = reservationRepository.save(reservation);
 		return reservation;
 	}
