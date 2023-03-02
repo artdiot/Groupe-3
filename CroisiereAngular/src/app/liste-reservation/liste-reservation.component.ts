@@ -32,6 +32,7 @@ export class ListeReservationComponent {
   listPast(): Array<Reservation> {
     let date = new Date(2023,2,28);
     return this.reservationService.findAllByClient(this.client.id).filter(res => {
+      console.log(res);
       let dateRes: Date = new Date(res.date);
        return dateRes<date;
       });
@@ -46,7 +47,7 @@ export class ListeReservationComponent {
   }
 
   planeteDepart(id: number):Planete{
-    this.voyageService.findDateDepart(id);
+    this.voyageService.findPlaneteDepart(id);
     return this.voyageService.planeteDepart;
   }
 

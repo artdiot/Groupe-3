@@ -15,8 +15,8 @@ public class testflo {
 
 		Planete planete1 = new Planete("test1", 0,5,10);
 		Planete planete2 = new Planete("test2", 0, -5,20);
-		Planete planete3 = new Planete("test2", 11, -15,40);
-		Planete planete4 = new Planete("test2", -8, 50,0);
+		Planete planete3 = new Planete("test3", 11, -15,40);
+		Planete planete4 = new Planete("test4", -8, 50,0);
 		
 		
 		
