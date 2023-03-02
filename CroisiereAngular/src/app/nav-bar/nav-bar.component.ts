@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Utilisateur } from '../model';
 import { AuthService } from '../service/auth.service';
 
@@ -11,11 +12,12 @@ export class NavBarComponent {
 
   authService:AuthService;
 
-  constructor(authService: AuthService){
+  constructor(authService: AuthService, private router: Router){
     this.authService=authService;
   }
 
   deconnect():void{
     this.authService.disconnect();
+    
   }
 }
