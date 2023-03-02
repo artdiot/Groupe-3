@@ -7,11 +7,12 @@ import { VoyageService } from '../service/voyage.service';
   templateUrl: './liste-voyage.component.html',
   styleUrls: ['./liste-voyage.component.scss']
 })
+
 export class ListeVoyageComponent {
   
   voyage : Voyage = null;
   formVoyage : Voyage;
-  
+
  
 
   constructor(private voyageService : VoyageService   ) {
