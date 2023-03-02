@@ -150,8 +150,9 @@ public LocalDate calculDateArrivee() {
 	
 	public Planete calculPlaneteDepart() {
 		Planete planeteDepart = etapes.get(0).getPlanetDepart();
+		System.out.println("test1");
 		int min = etapes.get(0).getId();
-		
+		System.out.println("test2");
 		for(Etape etape: etapes) {
 			
 			if (etape.getId()< min) {
