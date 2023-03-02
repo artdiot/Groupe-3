@@ -6,7 +6,7 @@
         <p class="card-text">distance : {{voy.distance}}</p>
         <div>
                 <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                        <div *ngFor="let e of etapes()">{{e.planeteDepart.nom}} - </div> <div>{{(voyage.etapes[(voyage.etapes.length)-1]).planeteArrivee.nom}}</div>
+                        <div *ngFor="let e of voy.etapes">{{e.planeteDepart.nom}} - </div> <div>{{(voy.etapes[(voy.etapes.length)-1]).planeteArrivee.nom}}</div>
                 </div>
                 </div>
         <a [routerLink]="['/connexion']" [routerLinkActive]="'active'" class="btn btn-primary">Reserver</a>

@@ -25,6 +25,7 @@ export class ListeVoyageComponent {
     return this.voyageService.findAll();
   }
   etapes(){
+    
     return this.voyage.etapes;
   }
 }
