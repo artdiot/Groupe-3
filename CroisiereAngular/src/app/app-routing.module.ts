@@ -6,6 +6,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ListeReservationComponent } from './liste-reservation/liste-reservation.component';
+import { ListeVoyageComponent } from './liste-voyage/liste-voyage.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { VoyageComponent } from './voyage/voyage.component';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: "reservation", component: ReservationComponent},
   {path: "inscription", component: InscriptionComponent},
   {path:"listeReservation", component:ListeReservationComponent},
+  {path: "listeVoyage", component:ListeVoyageComponent},
   {path: "voyage", component:VoyageComponent}
 ];
 

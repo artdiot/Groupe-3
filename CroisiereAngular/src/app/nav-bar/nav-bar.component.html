@@ -29,10 +29,9 @@
         </li>
     
         <li class="nav-item">
-          <a *ngIf="authService.isAdmin()"class="nav-link" [routerLink]="['/voyage/']" [routerLinkActive]="'active'">Voyage</a>
-        </li>
-        
-     
+          <button *ngIf="authService.connected"class="btn"><i class="bi bi-x-lg"></i>
+          </button>
+        </li>     
       </ul>
     </div>
   </nav>
