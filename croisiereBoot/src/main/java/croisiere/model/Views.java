@@ -8,6 +8,9 @@ public class Views {
 	public class ViewReservation extends ViewReservationInfo{
 	}
 	
+	public class ViewReservationWithEtapes extends ViewReservation{
+	}
+	
 	public class ViewReservationInfo extends ViewBase{
 	}
 	

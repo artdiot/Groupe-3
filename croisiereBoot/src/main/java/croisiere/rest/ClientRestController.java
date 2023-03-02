@@ -3,6 +3,8 @@ package croisiere.rest;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.JoinColumn;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,8 +21,10 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import croisiere.model.Client;
+import croisiere.model.Reservation;
 import croisiere.model.Views;
 import croisiere.repository.ClientRepository;
+import croisiere.repository.ReservationRepository;
 
 @RestController
 @RequestMapping("/client")
@@ -28,6 +32,10 @@ import croisiere.repository.ClientRepository;
 public class ClientRestController {
 	@Autowired
 	private ClientRepository clientRepository;
+	
+	
+	@Autowired
+	private ReservationRepository reservationRepository;
 
 	@GetMapping("")
 	@JsonView(Views.ViewClient.class)
@@ -90,5 +98,11 @@ public class ClientRestController {
 	public void delete(@PathVariable Integer id) {
 		clientRepository.deleteById(id);
 	}
-
+	
+	@GetMapping("/{id}/reservations")
+	@JsonView(Views.ViewReservationWithEtapes.class)
+	public List<Reservation> findAllReservations(@PathVariable Integer id)
+	{
+		return this.reservationRepository.findAllByIdClient(id);
+	}
 }

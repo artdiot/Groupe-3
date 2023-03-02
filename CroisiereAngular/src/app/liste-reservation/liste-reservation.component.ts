@@ -34,8 +34,14 @@ export class ListeReservationComponent {
     return this.reservationService.findAllByClient(this.client.id).filter(res => {
       console.log(res);
       let dateRes: Date = new Date(res.date);
-       return dateRes<date;
-      });
+
+      if(dateRes<date) {
+
+
+        return true;
+      }
+      return false;
+    });
   }
 
   edit(id: number): void{

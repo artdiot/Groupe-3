@@ -42,8 +42,8 @@ public class Voyage {
 	@JsonView(Views.ViewBase.class)
 	private int capacite;
 
-	@OneToMany(fetch = FetchType.EAGER,mappedBy = "voyage")
-	@JsonView(Views.ViewVoyage.class)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "voyage")
+	@JsonView({Views.ViewVoyage.class, Views.ViewReservationWithEtapes.class})
 	private List<Etape> etapes = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "voyage")
