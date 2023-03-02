@@ -1,5 +1,6 @@
 package croisiere.rest;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -86,6 +87,8 @@ public class ReservationRestController {
 			p.setReservation(reservation);
 			passagerRepo.save(p);
 		}
+		LocalDate dateDepart = reservation.getVoyage().calculDateDepart();
+		reservation.setDate(dateDepart);
 		
 		
 		reservation = reservationRepository.save(reservation);
