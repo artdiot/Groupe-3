@@ -176,6 +176,12 @@ class RemplissageTest {
 		passagers1.add(pas3);
 		Reservation r1 = new Reservation(v1,passagers1,c2);
 		reservationRepo.save(r1);
+		pas1.setReservation(r1);
+		passagerRepo.save(pas1);
+		pas2.setReservation(r1);
+		passagerRepo.save(pas1);
+		pas3.setReservation(r1);
+		passagerRepo.save(pas1);
 		
 		List<Passager> passagers2 = new ArrayList<Passager>();
 		passagers2.add(pas4);
@@ -196,7 +202,5 @@ class RemplissageTest {
 		passagerRepo.save(pas6);
 		pas7.setReservation(r3);
 		passagerRepo.save(pas7);
-		
-		
 	}
 }
