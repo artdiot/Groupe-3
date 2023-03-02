@@ -15,5 +15,7 @@ export class NavBarComponent {
     this.authService=authService;
   }
 
-
+  deconnect():void{
+    this.authService.disconnect();
+  }
 }

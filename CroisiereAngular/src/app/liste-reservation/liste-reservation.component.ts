@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { Client, Reservation } from '../model';
+import { Client, Planete, Reservation } from '../model';
 import { AuthService } from '../service/auth.service';
 import { EtapeService } from '../service/Etape.service';
 import { ReservationService } from '../service/reservation.service';
+import { VoyageService } from '../service/voyage.service';
 
 @Component({
   selector: 'app-liste-reservation',
@@ -15,7 +16,8 @@ export class ListeReservationComponent {
   client: Client= new Client();
   etapeService : EtapeService;
 
-  constructor(private reservationService: ReservationService, private authService: AuthService, etapeService : EtapeService){
+  constructor(private reservationService: ReservationService, private authService: AuthService, 
+    etapeService : EtapeService, private voyageService: VoyageService){
     this.client=this.authService.connected.compte as Client;
   }
 
@@ -43,4 +45,13 @@ export class ListeReservationComponent {
     this.reservationService.remove(id);
   }
 
+  planeteDepart(id: number):Planete{
+    this.voyageService.findDateDepart(id);
+    return this.voyageService.planeteDepart;
+  }
+
+  planeteArrivee(id: number):Planete{
+    this.voyageService.findPlaneteArrivee(id);
+    return this.voyageService.planeteArrivee;
+  }
 }

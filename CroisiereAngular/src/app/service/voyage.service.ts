@@ -67,15 +67,13 @@ export class VoyageService {
    
   findPlaneteDepart(id:number): void{
     this.http.get<Planete>("http://localhost:8888/voyage/planetedepart/"+ id).subscribe(resp => {
-      this.planeteDepart= resp;
-      console.log(this.planeteDepart.nom);
+      this.planeteDepart=resp;
   });
 }
 
 findPlaneteArrivee(id:number): void{
   this.http.get<Planete>("http://localhost:8888/voyage/planetearrivee/"+ id).subscribe(resp => {
     this.planeteArrivee= resp;
-    console.log(this.planeteArrivee.nom);
 });
 }
 
