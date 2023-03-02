@@ -9,12 +9,22 @@ import { VoyageService } from '../service/voyage.service';
 })
 export class ListeVoyageComponent {
   
-  voyage:VoyageService;
-  constructor(){
+  voyage : Voyage = null;
+  formVoyage : Voyage;
+  
+ 
 
-  }
+  constructor(private voyageService : VoyageService   ) {
+    voyageService.findById(1).subscribe(resp=>{
+      this.voyage=resp;
+      console.log("prix " + resp.prix );
+      });
+    }
   
   listeVoyage():Array<Voyage>{
-    return this.voyage.findAll();
+    return this.voyageService.findAll();
+  }
+  etapes(){
+    return this.voyage.etapes;
   }
 }

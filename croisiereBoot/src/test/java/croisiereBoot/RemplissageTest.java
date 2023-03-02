@@ -179,9 +179,9 @@ class RemplissageTest {
 		pas1.setReservation(r1);
 		passagerRepo.save(pas1);
 		pas2.setReservation(r1);
-		passagerRepo.save(pas1);
+		passagerRepo.save(pas2);
 		pas3.setReservation(r1);
-		passagerRepo.save(pas1);
+		passagerRepo.save(pas3);
 		
 		List<Passager> passagers2 = new ArrayList<Passager>();
 		passagers2.add(pas4);
