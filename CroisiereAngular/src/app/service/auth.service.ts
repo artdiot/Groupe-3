@@ -8,6 +8,7 @@ import { Client, Utilisateur } from '../model';
 })
 export class AuthService {
   connected: Utilisateur = null;
+  
   constructor(private http: HttpClient, private router: Router) {
   }
 
@@ -19,7 +20,6 @@ export class AuthService {
       this.connected = resp;
       if (this.connected) {
         if (this.connected.role == "CLIENT") {
-          console.log(this.connected.compte.id);
           this.router.navigate(['/accueilclient/',{id: this.connected.compte.id}]);
         }
         if(this.connected.role=="ADMIN"){
