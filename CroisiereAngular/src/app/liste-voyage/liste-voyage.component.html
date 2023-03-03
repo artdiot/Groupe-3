@@ -22,13 +22,14 @@
         <div class="info"> <p class="card-text"><strong>Prix </strong>: {{voy.prix}}</p>
         </div>
 </div>
-      
+      <footer>
         <div class="centrage">
         <div class="connexion">
         <a *ngIf="connected()" [routerLink]="['/reservation',{id:voy.id}]" [routerLinkActive]="'active'">Réserver</a>
         <a *ngIf="!connected()" [routerLink]="['/connexion']" [routerLinkActive]="'active'">Se connecter</a>
-</div>
-</div>
 
+</div>
+</div>
+</footer>
 </div>
 </div>
