@@ -7,9 +7,9 @@
                        
                         <tr *ngFor="let e of voy.etapes; let index = index" class="">
                                <div *ngIf="index<=(voy.etapes.length)-1">
-                                        <td *ngIf="index<=(voy.etapes.length)-1"><strong>Etape {{index +1}}</strong>:{{e.planeteDepart.nom}}</td></div>
+                                        <td *ngIf="index<=(voy.etapes.length)-1"><strong>Planète {{index +1}}</strong> : {{e.planeteDepart.nom}}</td></div>
                                         <div *ngIf="index>=(voy.etapes.length)-1">
-                                        <td ><strong>Etape {{index +2}} </strong>:{{(voy.etapes[(voy.etapes.length)-1]).planeteArrivee.nom}}</td></div>
+                                        <td ><strong>Planète {{index +2}} </strong> : {{(voy.etapes[(voy.etapes.length)-1]).planeteArrivee.nom}}</td></div>
                            
                                         <strong></strong>
  
@@ -17,7 +17,7 @@
                         </tbody>               
         <br>
         <div class="info"><p class="card-text"><strong>Depart </strong>: {{voy.etapes[0].depart}}</p> </div>
-        <div class="info"><p class="card-text"><strong>Arrivée </strong>: {{voy.etapes[(voy.etapes.length)-1].depart}}</p> </div>
+        <div class="info"><p class="card-text"><strong>Arrivée </strong>: {{voy.etapes[(voy.etapes.length)-1].arrivee}}</p> </div>
         <div class="info"><p class="card-text"><strong>Distance </strong>: {{voy.distance}}</p> </div>
         <div class="info"> <p class="card-text"><strong>Prix </strong>: {{voy.prix}}</p>
         </div>
