@@ -8,16 +8,16 @@
         <li class="nav-item active ">
           <a class="nav-link" [routerLink]="['']" >  Accueil </a>
         </li>
-        
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/listeVoyage/']" >Liste voyages</a>
+        </li>
         <li class="nav-item">
           <a *ngIf="!authService.connected" class="nav-link" [routerLink]="['/connexion']" >Connexion</a>
         </li>
         <li class="nav-item">
           <a *ngIf="!authService.connected" class="nav-link" [routerLink]="['/inscription']" >Inscription</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/listeVoyage/']" >Liste voyages</a>
-        </li>
+        
 
         <li class="nav-item">
           <a *ngIf="authService.isClient()"class="nav-link" [routerLink]="['/accueilclient/']" >Espace Client</a>
