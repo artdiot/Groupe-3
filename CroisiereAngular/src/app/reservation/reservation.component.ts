@@ -27,7 +27,6 @@ export class ReservationComponent {
     private passagerService: PassagerService, private route : ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.id = params["id"];
-      console.log(this.id);
       voyageService.findById(this.id).subscribe(resp=>{
         this.voyage=resp;
         });
@@ -52,21 +51,6 @@ export class ReservationComponent {
       this.formReservation = response;
     });
   }
-
-/*   save(): void {
-    if(this.formReservation.id) { // UPDATE
-      this.reservationService.update(this.formReservation);
-    } else { // CREATE
-      this.formReservation.voyage=this.voyage;
-      this.passagerService.create(this.formPassager);
-      this.formPassager.reservation=this.formReservation;
-      this.passagerService.update(this.formPassager);
-      this.formReservation.client = this.authService.connected.compte as Client; 
-      this.reservationService.create(this.formReservation);
-      this.router.navigate(['/accueilclient',{id:this.authService.connected.compte.id}]);
-    }
-    this.cancel();
-  } */
 
   save(): void {
     if(this.formReservation.id) { // UPDATE
