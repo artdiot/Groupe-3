@@ -21,10 +21,10 @@ flex-direction: row;
   margin-top: 2%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+ // justify-content: space-between;
 }
 .carouselTaille{
-  width: 15%;
+  width: 25%;
   height: auto;
   margin-left: 2%;
   margin-top: 2%;
@@ -62,9 +62,10 @@ height: 300px;
   backdrop-filter: blur(50px);
 }
 p{
-  font-family:  Comic Sans MS;
+  font-family:  Tahoma;
  // font-weight: bold;
   color: black;
+  font-size: 18px;
 }
 h1{
   color: #AAABD3;
